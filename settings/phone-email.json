@@ -1,0 +1,14 @@
+{
+  "topK": [1, 10, 30, 50, 100],
+  "sepRwrIter": 100,
+  "prodRwrIter": 50,
+  "alpha": 0.5,
+  "beta": 0.15,
+  "gamma": 0.7,
+  "inIter": 5,
+  "outIter": 10,
+  "l1": 5e-4,
+  "l2": 5e-3,
+  "l3": 5e-4,
+  "l4": 2e-5
+}
