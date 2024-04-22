@@ -10,5 +10,8 @@
   "l1": 2e-3,
   "l2": 1e-2,
   "l3": 2e-3,
-  "l4": 1e-6
+  "l4": 1e-6,
+  "use_attr": true,
+  "graph1": "cora1",
+  "graph2": "cora2"
 }

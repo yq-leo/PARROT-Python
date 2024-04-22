@@ -10,5 +10,8 @@
   "l1": 1e-1,
   "l2": 1e-2,
   "l3": 1e-2,
-  "l4": 5e-5
+  "l4": 5e-5,
+  "use_attr": true,
+  "graph1": "ACM",
+  "graph2": "DBLP"
 }

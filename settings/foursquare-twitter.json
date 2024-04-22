@@ -10,5 +10,8 @@
   "l1": 1e-3,
   "l2": 5e-3,
   "l3": 5e-4,
-  "l4": 3e-6
+  "l4": 3e-6,
+  "use_attr": false,
+  "graph1": "foursquare",
+  "graph2": "twitter"
 }
