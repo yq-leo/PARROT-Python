@@ -1,7 +1,7 @@
 {
   "topK": [1, 10, 30, 50, 100],
-  "sepRwrIter": 100,
-  "prodRwrIter": 50,
+  "rwrIter": 100,
+  "rwIter": 50,
   "alpha": 0.5,
   "beta": 0.15,
   "gamma": 0.7,
