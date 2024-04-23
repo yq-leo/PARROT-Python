@@ -1,6 +1,7 @@
 import time
 import numpy as np
 from utils import *
+import scipy.io as sio
 
 
 def parrot(A1, A2, X1, X2, H, sepRwrIter, prodRwrIter, alpha, beta, gamma, inIter, outIter, l1, l2, l3, l4):
@@ -35,8 +36,8 @@ def parrot(A1, A2, X1, X2, H, sepRwrIter, prodRwrIter, alpha, beta, gamma, inIte
     if np.sum(A2.sum(1) == 0) != 0:
         A2[np.where(A2.sum(1) == 0)] = np.ones(ny)
 
-    L1 = A1 / A1.sum(1)
-    L2 = A2 / A2.sum(1)
+    L1 = A1 / A1.sum(1, keepdims=True)
+    L2 = A2 / A2.sum(1, keepdims=True)
 
     crossC, intraC1, intraC2 = get_cost(A1, A2, X1, X2, H, sepRwrIter, prodRwrIter, alpha, beta, gamma)
     T, W, res = cpot(L1, L2, crossC, intraC1, intraC2, inIter, outIter, H, l1, l2, l3, l4)
@@ -67,7 +68,6 @@ def cpot(L1, L2, crossC, intraC1, intraC2, inIter, outIter, H, l1, l2, l3, l4):
 
     nx, ny = crossC.shape
     l4 = l4 * nx * ny
-    eps = 0
 
     # define initial matrix values
     a = np.ones((nx, 1)).astype(np.float64) / nx
@@ -81,18 +81,20 @@ def cpot(L1, L2, crossC, intraC1, intraC2, inIter, outIter, H, l1, l2, l3, l4):
 
     # functions for OT
     def mina(H_in, epsilon):
-        return -epsilon * np.log(np.sum(a * np.exp(-H_in / epsilon), axis=0))
+        in_a = np.ones((nx, 1)).astype(np.float64) / nx
+        return -epsilon * np.log(np.sum(in_a * np.exp(-H_in / epsilon), axis=0, keepdims=True))
 
     def minb(H_in, epsilon):
-        return -epsilon * np.log(np.sum(b * np.exp(-H_in / epsilon), axis=1))
+        in_b = np.ones((1, ny)).astype(np.float64) / ny
+        return -epsilon * np.log(np.sum(in_b * np.exp(-H_in / epsilon), axis=1, keepdims=True))
 
     def minaa(H_in, epsilon):
-        return mina(H_in - np.min(H_in, axis=0).reshape(1, -1), epsilon) + np.min(H_in, axis=0)
+        return mina(H_in - np.min(H_in, axis=0).reshape(1, -1), epsilon) + np.min(H_in, axis=0).reshape(1, -1)
 
     def minbb(H_in, epsilon):
-        return minb(H_in - np.min(H_in, axis=1).reshape(-1, 1), epsilon) + np.min(H_in, axis=1)
+        return minb(H_in - np.min(H_in, axis=1).reshape(-1, 1), epsilon) + np.min(H_in, axis=1).reshape(-1, 1)
 
-    temp1 = 0.5 * (intraC1 ** 2) @ r @ np.ones((1, ny)) + 0.5 * np.ones((nx, 1)) @ c @ (intraC2 ** 2)
+    temp1 = 0.5 * (intraC1 ** 2) @ r @ np.ones((1, ny)) + 0.5 * np.ones((nx, 1)) @ c @ (intraC2 ** 2).T
 
     resRecord = []
     WRecord = []
@@ -101,7 +103,7 @@ def cpot(L1, L2, crossC, intraC1, intraC2, inIter, outIter, H, l1, l2, l3, l4):
     for i in range(outIter):
         T_old = T.copy()
         CGW = temp1 - intraC1 @ T @ intraC2.T
-        C = crossC - l2 * np.log(L1 @ T @ L2.T + eps) - l3 * np.log(H) + l4 * CGW
+        C = crossC - l2 * np.log(L1 @ T @ L2.T) - l3 * np.log(H) + l4 * CGW
 
         if i == 0:
             C_old = C
@@ -115,8 +117,9 @@ def cpot(L1, L2, crossC, intraC1, intraC2, inIter, outIter, H, l1, l2, l3, l4):
 
         Q = C - l1 * np.log(T)
         for j in range(inIter):
-            a = minaa(Q - b, l).reshape(1, -1)
-            b = minbb(Q - a, l).reshape(-1, 1)
+            a = minaa(Q - b, l)
+            b = minbb(Q - a, l)
+            pass
 
         T = 0.05 * T_old + 0.95 * r * np.exp((a + b - Q) / l) * c
         res = np.sum(np.abs(T - T_old))

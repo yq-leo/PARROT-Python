@@ -31,5 +31,7 @@ def load_data(file_path, G1_name, G2_name, use_attr):
         adj_mat1 = adj_mat1.A
     if type(adj_mat2) is not np.ndarray:
         adj_mat2 = adj_mat2.A
+    if type(H) is not np.ndarray:
+        H = H.A
 
     return adj_mat1, adj_mat2, x1, x2, gnd, H

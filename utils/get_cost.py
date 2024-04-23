@@ -33,8 +33,8 @@ def get_cost(A1, A2, X1, X2, H, rwrIter, rwIter, alpha, beta, gamma):
 
     # cross/intra-graph cost based on node attributes
     if X1 is None or X2 is None:
-        X1 = rwr1.copy()
-        X2 = rwr2.copy()
+        X1 = rwr1
+        X2 = rwr2
 
     intraC1 = get_intra_cost(X1) * A1
     intraC2 = get_intra_cost(X2) * A2
@@ -42,8 +42,9 @@ def get_cost(A1, A2, X1, X2, H, rwrIter, rwIter, alpha, beta, gamma):
 
     # rwr on the product graph
     crossC = crossC + alpha * rwrCost
-    L1 = A1 / A1.sum(1)
-    L2 = A2 / A2.sum(1)
+    L1 = A1 / A1.sum(1, keepdims=True)
+    L2 = A2 / A2.sum(1, keepdims=True)
+
     crossC = get_prod_rwr(L1, L2, crossC, H, beta, gamma, rwIter)
 
     end_time = time.time()
@@ -64,7 +65,7 @@ def cal_trans(A, X=None):
     n = A.shape[0]
 
     if X is None:
-        X = np.ones((n, 1))
+        X = np.ones((n, 1)).astype(np.float64)
     X = X / np.linalg.norm(X, axis=1, ord=2, keepdims=True)
     sim = X @ X.T
     T = sim * A
@@ -105,9 +106,8 @@ def get_sep_rwr(T1, T2, H, beta, sepRwrIter):
         r2_old = r2.copy()
         r1 = (1 - beta) * T1 @ r1 + beta * e1
         r2 = (1 - beta) * T2 @ r2 + beta * e2
-        diff1 = np.linalg.norm(r1 - r1_old, ord=1)
-        diff2 = np.linalg.norm(r2 - r2_old, ord=1)
-        if diff1 < eps and diff2 < eps:
+        diff = max(np.max(np.abs(r1 - r1_old)), np.max(np.abs(r2 - r2_old)))
+        if diff < eps:
             break
 
     return r1, r2
@@ -124,12 +124,16 @@ def get_cross_cost(X1, X2, H):
     """
 
     _, d = X1.shape
+    X1_zero_pos = np.where(np.abs(X1).sum(1) == 0)
+    X2_zero_pos = np.where(np.abs(X2).sum(1) == 0)
+
     X1 = X1 / np.linalg.norm(X1, axis=1, ord=2, keepdims=True)
     X2 = X2 / np.linalg.norm(X2, axis=1, ord=2, keepdims=True)
-    if np.sum(np.abs(X1).sum(1) == 0) != 0:
-        X1[np.where(np.abs(X1).sum(1) == 0)] = np.sqrt(1/d)
-    if np.sum(np.abs(X2).sum(1) == 0) != 0:
-        X2[np.where(np.abs(X2).sum(1) == 0)] = np.sqrt(1/d)
+
+    if X1_zero_pos[0].shape[0] != 0:
+        X1[X1_zero_pos] = np.sqrt(1/d)
+    if X2_zero_pos[0].shape[0] != 0:
+        X2[X2_zero_pos] = np.sqrt(1/d)
     crossCost = np.exp(-(X1 @ X2.T))
     crossCost[np.where(H.T == 1)] = 0
 
@@ -145,9 +149,10 @@ def get_intra_cost(X):
     """
 
     _, d = X.shape
+    X_zero_pos = np.where(np.abs(X).sum(1) == 0)
     X = X / np.linalg.norm(X, axis=1, ord=2, keepdims=True)
-    if np.sum(np.abs(X).sum(1) == 0) != 0:
-        X[np.where(np.abs(X).sum(1) == 0)] = np.sqrt(1/d)
+    if X_zero_pos[0].shape[0] != 0:
+        X[X_zero_pos] = np.sqrt(1/d)
     intraCost = np.exp(-(X @ X.T))
 
     return intraCost
@@ -172,10 +177,10 @@ def get_prod_rwr(L1, L2, nodeCost, H, beta, gamma, prodRwrIter):
     HInd = np.where(H.T == 1)
     crossCost = np.zeros((nx, ny)).astype(np.float64)
     for i in tqdm(range(prodRwrIter), desc="Computing product RWR scores"):
-        rwCost_old = crossCost
+        rwCost_old = crossCost.copy()
         crossCost = (1 + gamma * beta) * nodeCost + (1 - beta) * gamma * L1 @ crossCost @ L2.T
         crossCost[HInd] = 0
-        if np.linalg.norm(crossCost - rwCost_old, ord=1) < eps:
+        if np.max(np.abs(crossCost - rwCost_old)) < eps:
             break
     crossCost = (1 - gamma) * crossCost
     crossCost[HInd] = 0
