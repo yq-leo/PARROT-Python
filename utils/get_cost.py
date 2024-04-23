@@ -126,14 +126,14 @@ def get_cross_cost(X1, X2, H):
     _, d = X1.shape
     X1_zero_pos = np.where(np.abs(X1).sum(1) == 0)
     X2_zero_pos = np.where(np.abs(X2).sum(1) == 0)
+    if X1_zero_pos[0].shape[0] != 0:
+        X1[X1_zero_pos] = np.ones(d)
+    if X2_zero_pos[0].shape[0] != 0:
+        X2[X2_zero_pos] = np.ones(d)
 
     X1 = X1 / np.linalg.norm(X1, axis=1, ord=2, keepdims=True)
     X2 = X2 / np.linalg.norm(X2, axis=1, ord=2, keepdims=True)
 
-    if X1_zero_pos[0].shape[0] != 0:
-        X1[X1_zero_pos] = np.sqrt(1/d)
-    if X2_zero_pos[0].shape[0] != 0:
-        X2[X2_zero_pos] = np.sqrt(1/d)
     crossCost = np.exp(-(X1 @ X2.T))
     crossCost[np.where(H.T == 1)] = 0
 
@@ -150,9 +150,9 @@ def get_intra_cost(X):
 
     _, d = X.shape
     X_zero_pos = np.where(np.abs(X).sum(1) == 0)
-    X = X / np.linalg.norm(X, axis=1, ord=2, keepdims=True)
     if X_zero_pos[0].shape[0] != 0:
-        X[X_zero_pos] = np.sqrt(1/d)
+        X[X_zero_pos] = np.ones(d)
+    X = X / np.linalg.norm(X, axis=1, ord=2, keepdims=True)
     intraCost = np.exp(-(X @ X.T))
 
     return intraCost

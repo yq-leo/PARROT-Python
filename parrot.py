@@ -1,7 +1,7 @@
 import time
 import numpy as np
 from utils import *
-import scipy.io as sio
+from tqdm import tqdm
 
 
 def parrot(A1, A2, X1, X2, H, sepRwrIter, prodRwrIter, alpha, beta, gamma, inIter, outIter, l1, l2, l3, l4):
@@ -100,7 +100,7 @@ def cpot(L1, L2, crossC, intraC1, intraC2, inIter, outIter, H, l1, l2, l3, l4):
     WRecord = []
     # outIter = min(outIter, int(np.max(crossC) * np.log(max(nx, ny) * (eps ** (-3)))))
     start_time = time.time()
-    for i in range(outIter):
+    for i in tqdm(range(outIter), desc="Computing constraint proximal point iteration"):
         T_old = T.copy()
         CGW = temp1 - intraC1 @ T @ intraC2.T
         C = crossC - l2 * np.log(L1 @ T @ L2.T) - l3 * np.log(H) + l4 * CGW

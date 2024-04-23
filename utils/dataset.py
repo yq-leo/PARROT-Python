@@ -18,6 +18,7 @@ def load_data(file_path, G1_name, G2_name, use_attr):
     """
     assert os.path.exists(file_path), f"{file_path} does not exist"
 
+    print(f"Loading {file_path}...")
     data = sio.loadmat(file_path)
     adj_mat1, adj_mat2 = data[G1_name].astype(int), data[G2_name].astype(int)
     if use_attr:
