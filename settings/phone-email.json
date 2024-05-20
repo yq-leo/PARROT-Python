@@ -6,7 +6,7 @@
   "beta": 0.15,
   "gamma": 0.7,
   "inIter": 5,
-  "outIter": 10,
+  "outIter": 20,
   "l1": 5e-4,
   "l2": 5e-3,
   "l3": 5e-4,
