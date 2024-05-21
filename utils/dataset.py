@@ -1,5 +1,6 @@
 import scipy.io as sio
 import numpy as np
+import torch
 import os
 
 
@@ -38,5 +39,12 @@ def load_data(file_path, G1_name, G2_name, use_attr):
         adj_mat2 = adj_mat2.A
     if type(H) is not np.ndarray:
         H = H.A
+
+    adj_mat1 = torch.from_numpy(adj_mat1).int()
+    adj_mat2 = torch.from_numpy(adj_mat2).int()
+    x1 = torch.from_numpy(x1).to(torch.float64) if x1 is not None else None
+    x2 = torch.from_numpy(x2).to(torch.float64) if x2 is not None else None
+    gnd = torch.from_numpy(gnd).long()
+    H = torch.from_numpy(H).int()
 
     return adj_mat1, adj_mat2, x1, x2, gnd, H

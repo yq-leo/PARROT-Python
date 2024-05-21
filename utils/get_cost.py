@@ -1,5 +1,5 @@
-import numpy as np
-from scipy.special import softmax
+import torch
+from torch.nn.functional import softmax
 import time
 from tqdm import tqdm
 
@@ -42,8 +42,8 @@ def get_cost(A1, A2, X1, X2, H, rwrIter, rwIter, alpha, beta, gamma):
 
     # rwr on the product graph
     crossC = crossC + alpha * rwrCost
-    L1 = A1 / A1.sum(1, keepdims=True)
-    L2 = A2 / A2.sum(1, keepdims=True)
+    L1 = A1 / A1.sum(1, keepdim=True).to(torch.float64)
+    L2 = A2 / A2.sum(1, keepdim=True).to(torch.float64)
 
     crossC = get_prod_rwr(L1, L2, crossC, H, beta, gamma, rwIter)
 
@@ -65,12 +65,12 @@ def cal_trans(A, X=None):
     n = A.shape[0]
 
     if X is None:
-        X = np.ones((n, 1)).astype(np.float64)
-    X = X / np.linalg.norm(X, axis=1, ord=2, keepdims=True)
+        X = torch.ones((n, 1)).to(torch.float64)
+    X = X / torch.linalg.norm(X, dim=1, ord=2, keepdim=True)
     sim = X @ X.T
     T = sim * A
     for i in range(n):
-        T[i, np.where(T[i] != 0)] = softmax(T[i, np.where(T[i] != 0)])
+        T[i, torch.where(T[i] != 0)[0]] = softmax(T[i, torch.where(T[i] != 0)[0]], dim=0)
 
     return T
 
@@ -89,24 +89,24 @@ def get_sep_rwr(T1, T2, H, beta, sepRwrIter):
     """
     eps = 1e-5
 
-    anchors1, anchors2 = np.where(H.T == 1)
+    anchors1, anchors2 = torch.where(H.T == 1)
     n1, n2 = T1.shape[0], T2.shape[0]
     num_anchors = anchors1.shape[0]
 
-    e1 = np.zeros((n1, num_anchors)).astype(np.float64)
-    e2 = np.zeros((n2, num_anchors)).astype(np.float64)
-    e1[(anchors1, np.arange(num_anchors))] = 1
-    e2[(anchors2, np.arange(num_anchors))] = 1
+    e1 = torch.zeros((n1, num_anchors)).to(torch.float64)
+    e2 = torch.zeros((n2, num_anchors)).to(torch.float64)
+    e1[(anchors1, torch.arange(num_anchors))] = 1
+    e2[(anchors2, torch.arange(num_anchors))] = 1
 
-    r1 = np.zeros((n1, num_anchors)).astype(np.float64)
-    r2 = np.zeros((n2, num_anchors)).astype(np.float64)
+    r1 = torch.zeros((n1, num_anchors)).to(torch.float64)
+    r2 = torch.zeros((n2, num_anchors)).to(torch.float64)
 
     for i in tqdm(range(sepRwrIter), desc="Computing separate RWR scores"):
-        r1_old = r1.copy()
-        r2_old = r2.copy()
+        r1_old = torch.clone(r1)
+        r2_old = torch.clone(r2)
         r1 = (1 - beta) * T1 @ r1 + beta * e1
         r2 = (1 - beta) * T2 @ r2 + beta * e2
-        diff = max(np.max(np.abs(r1 - r1_old)), np.max(np.abs(r2 - r2_old)))
+        diff = torch.max(torch.max(torch.abs(r1 - r1_old)), torch.max(torch.abs(r2 - r2_old)))
         if diff < eps:
             break
 
@@ -124,18 +124,18 @@ def get_cross_cost(X1, X2, H):
     """
 
     _, d = X1.shape
-    X1_zero_pos = np.where(np.abs(X1).sum(1) == 0)
-    X2_zero_pos = np.where(np.abs(X2).sum(1) == 0)
+    X1_zero_pos = torch.where(X1.abs().sum(1) == 0)
+    X2_zero_pos = torch.where(X2.abs().sum(1) == 0)
     if X1_zero_pos[0].shape[0] != 0:
-        X1[X1_zero_pos] = np.ones(d)
+        X1[X1_zero_pos] = torch.ones(d).to(torch.float64)
     if X2_zero_pos[0].shape[0] != 0:
-        X2[X2_zero_pos] = np.ones(d)
+        X2[X2_zero_pos] = torch.ones(d).to(torch.float64)
 
-    X1 = X1 / np.linalg.norm(X1, axis=1, ord=2, keepdims=True)
-    X2 = X2 / np.linalg.norm(X2, axis=1, ord=2, keepdims=True)
+    X1 = X1 / torch.linalg.norm(X1, dim=1, ord=2, keepdim=True)
+    X2 = X2 / torch.linalg.norm(X2, dim=1, ord=2, keepdim=True)
 
-    crossCost = np.exp(-(X1 @ X2.T))
-    crossCost[np.where(H.T == 1)] = 0
+    crossCost = torch.exp(-(X1 @ X2.T))
+    crossCost[torch.where(H.T == 1)] = 0
 
     return crossCost
 
@@ -149,11 +149,11 @@ def get_intra_cost(X):
     """
 
     _, d = X.shape
-    X_zero_pos = np.where(np.abs(X).sum(1) == 0)
+    X_zero_pos = torch.where(X.abs().sum(1) == 0)
     if X_zero_pos[0].shape[0] != 0:
-        X[X_zero_pos] = np.ones(d)
-    X = X / np.linalg.norm(X, axis=1, ord=2, keepdims=True)
-    intraCost = np.exp(-(X @ X.T))
+        X[X_zero_pos] = torch.ones(d).to(torch.float64)
+    X = X / torch.linalg.norm(X, dim=1, ord=2, keepdim=True)
+    intraCost = torch.exp(-(X @ X.T))
 
     return intraCost
 
@@ -174,13 +174,13 @@ def get_prod_rwr(L1, L2, nodeCost, H, beta, gamma, prodRwrIter):
 
     eps = 1e-2
     nx, ny = H.T.shape
-    HInd = np.where(H.T == 1)
-    crossCost = np.zeros((nx, ny)).astype(np.float64)
+    HInd = torch.where(H.T == 1)
+    crossCost = torch.zeros((nx, ny)).to(torch.float64)
     for i in tqdm(range(prodRwrIter), desc="Computing product RWR scores"):
-        rwCost_old = crossCost.copy()
+        rwCost_old = torch.clone(crossCost)
         crossCost = (1 + gamma * beta) * nodeCost + (1 - beta) * gamma * L1 @ crossCost @ L2.T
         crossCost[HInd] = 0
-        if np.max(np.abs(crossCost - rwCost_old)) < eps:
+        if torch.max(torch.abs(crossCost - rwCost_old)) < eps:
             break
     crossCost = (1 - gamma) * crossCost
     crossCost[HInd] = 0

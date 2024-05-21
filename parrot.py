@@ -1,5 +1,5 @@
 import time
-import numpy as np
+import torch
 from utils import *
 from tqdm import tqdm
 
@@ -31,13 +31,13 @@ def parrot(A1, A2, X1, X2, H, sepRwrIter, prodRwrIter, alpha, beta, gamma, inIte
 
     nx, ny = H.T.shape
 
-    if np.sum(A1.sum(1) == 0) != 0:
-        A1[np.where(A1.sum(1) == 0)] = np.ones(nx)
-    if np.sum(A2.sum(1) == 0) != 0:
-        A2[np.where(A2.sum(1) == 0)] = np.ones(ny)
+    if torch.sum(A1.sum(1) == 0) != 0:
+        A1[torch.where(A1.sum(1) == 0)] = torch.ones(nx).int()
+    if torch.sum(A2.sum(1) == 0) != 0:
+        A2[torch.where(A2.sum(1) == 0)] = torch.ones(ny).int()
 
-    L1 = A1 / A1.sum(1, keepdims=True)
-    L2 = A2 / A2.sum(1, keepdims=True)
+    L1 = A1 / A1.sum(1, keepdim=True).to(torch.float64)
+    L2 = A2 / A2.sum(1, keepdim=True).to(torch.float64)
 
     crossC, intraC1, intraC2 = get_cost(A1, A2, X1, X2, H, sepRwrIter, prodRwrIter, alpha, beta, gamma)
     T, W, res = cpot(L1, L2, crossC, intraC1, intraC2, inIter, outIter, H, l1, l2, l3, l4)
@@ -70,61 +70,61 @@ def cpot(L1, L2, crossC, intraC1, intraC2, inIter, outIter, H, l1, l2, l3, l4):
     l4 = l4 * nx * ny
 
     # define initial matrix values
-    a = np.ones((nx, 1)).astype(np.float64) / nx
-    b = np.ones((1, ny)).astype(np.float64) / ny
-    r = np.ones((nx, 1)).astype(np.float64) / nx
-    c = np.ones((1, ny)).astype(np.float64) / ny
-    l = l1 + l2 + l3
+    a = torch.ones((nx, 1)).to(torch.float64) / nx
+    b = torch.ones((1, ny)).to(torch.float64) / ny
+    r = torch.ones((nx, 1)).to(torch.float64) / nx
+    c = torch.ones((1, ny)).to(torch.float64) / ny
+    l_total = l1 + l2 + l3
 
-    T = np.ones((nx, ny)).astype(np.float64) / (nx * ny)
-    H = H.T + np.ones((nx, ny)) / ny
+    T = torch.ones((nx, ny)).to(torch.float64) / (nx * ny)
+    H = H.T + torch.ones((nx, ny)).to(torch.float64) / ny
 
     # functions for OT
     def mina(H_in, epsilon):
-        in_a = np.ones((nx, 1)).astype(np.float64) / nx
-        return -epsilon * np.log(np.sum(in_a * np.exp(-H_in / epsilon), axis=0, keepdims=True))
+        in_a = torch.ones((nx, 1)).to(torch.float64) / nx
+        return -epsilon * torch.log(torch.sum(in_a * torch.exp(-H_in / epsilon), dim=0, keepdim=True))
 
     def minb(H_in, epsilon):
-        in_b = np.ones((1, ny)).astype(np.float64) / ny
-        return -epsilon * np.log(np.sum(in_b * np.exp(-H_in / epsilon), axis=1, keepdims=True))
+        in_b = torch.ones((1, ny)).to(torch.float64) / ny
+        return -epsilon * torch.log(torch.sum(in_b * torch.exp(-H_in / epsilon), dim=1, keepdim=True))
 
     def minaa(H_in, epsilon):
-        return mina(H_in - np.min(H_in, axis=0).reshape(1, -1), epsilon) + np.min(H_in, axis=0).reshape(1, -1)
+        return mina(H_in - torch.min(H_in, dim=0).values.view(1, -1), epsilon) + torch.min(H_in, dim=0).values.view(1, -1)
 
     def minbb(H_in, epsilon):
-        return minb(H_in - np.min(H_in, axis=1).reshape(-1, 1), epsilon) + np.min(H_in, axis=1).reshape(-1, 1)
+        return minb(H_in - torch.min(H_in, dim=1).values.view(-1, 1), epsilon) + torch.min(H_in, dim=1).values.view(-1, 1)
 
-    temp1 = 0.5 * (intraC1 ** 2) @ r @ np.ones((1, ny)) + 0.5 * np.ones((nx, 1)) @ c @ (intraC2 ** 2).T
+    temp1 = 0.5 * (intraC1 ** 2) @ r @ torch.ones((1, ny)).to(torch.float64) + 0.5 * torch.ones((nx, 1)).to(torch.float64) @ c @ (intraC2 ** 2).T
 
     resRecord = []
     WRecord = []
     # outIter = min(outIter, int(np.max(crossC) * np.log(max(nx, ny) * (eps ** (-3)))))
     start_time = time.time()
     for i in tqdm(range(outIter), desc="Computing constraint proximal point iteration"):
-        T_old = T.copy()
+        T_old = torch.clone(T)
         CGW = temp1 - intraC1 @ T @ intraC2.T
-        C = crossC - l2 * np.log(L1 @ T @ L2.T) - l3 * np.log(H) + l4 * CGW
+        C = crossC - l2 * torch.log(L1 @ T @ L2.T) - l3 * torch.log(H) + l4 * CGW
 
         if i == 0:
             C_old = C
         else:
-            W_old = np.sum(T * C_old)
-            W = np.sum(T * C)
+            W_old = torch.sum(T * C_old)
+            W = torch.sum(T * C)
             if W <= W_old:
                 C_old = C
             else:
                 C = C_old
 
-        Q = C - l1 * np.log(T)
+        Q = C - l1 * torch.log(T)
         for j in range(inIter):
-            a = minaa(Q - b, l)
-            b = minbb(Q - a, l)
+            a = minaa(Q - b, l_total)
+            b = minbb(Q - a, l_total)
             pass
 
-        T = 0.05 * T_old + 0.95 * r * np.exp((a + b - Q) / l) * c
-        res = np.sum(np.abs(T - T_old))
+        T = 0.05 * T_old + 0.95 * r * torch.exp((a + b - Q) / l_total) * c
+        res = torch.sum(torch.abs(T - T_old))
         resRecord.append(res)
-        WRecord.append(np.sum(T * C))
+        WRecord.append(torch.sum(T * C))
 
     end_time = time.time()
     print(f"Time for optimization: {end_time - start_time:.2f}s")
