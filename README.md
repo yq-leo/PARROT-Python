@@ -19,7 +19,7 @@ You can run `main.py` using one of the following datasets
 - foursquare-twitter
 - phone-email
 
-### Effiency
+### Efficiency
 | Dataset / Runtime    | MATLAB            | PyTorch           |
 |----------------------|--------------------|---------------------|
 | ACM_DBLP_A       | 12.32s + 53.95s    | 110.55s + 241.52s   |
