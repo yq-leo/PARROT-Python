@@ -36,8 +36,8 @@ def parrot(A1, A2, X1, X2, H, sepRwrIter, prodRwrIter, alpha, beta, gamma, inIte
     if torch.sum(A2.sum(1) == 0) != 0:
         A2[torch.where(A2.sum(1) == 0)] = torch.ones(ny)
 
-    L1 = A1 / A1.sum(1, keepdim=True)
-    L2 = A2 / A2.sum(1, keepdim=True)
+    L1 = A1 / A1.sum(1, keepdim=True).to(torch.float64)
+    L2 = A2 / A2.sum(1, keepdim=True).to(torch.float64)
 
     crossC, intraC1, intraC2 = get_cost(A1, A2, X1, X2, H, sepRwrIter, prodRwrIter, alpha, beta, gamma)
     T, W, res = cpot(L1, L2, crossC, intraC1, intraC2, inIter, outIter, H, l1, l2, l3, l4)
@@ -70,22 +70,22 @@ def cpot(L1, L2, crossC, intraC1, intraC2, inIter, outIter, H, l1, l2, l3, l4):
     l4 = l4 * nx * ny
 
     # define initial matrix values
-    a = torch.ones((nx, 1)).float() / nx
-    b = torch.ones((1, ny)).float() / ny
-    r = torch.ones((nx, 1)).float() / nx
-    c = torch.ones((1, ny)).float() / ny
+    a = torch.ones((nx, 1)).to(torch.float64) / nx
+    b = torch.ones((1, ny)).to(torch.float64) / ny
+    r = torch.ones((nx, 1)).to(torch.float64) / nx
+    c = torch.ones((1, ny)).to(torch.float64) / ny
     l_total = l1 + l2 + l3
 
-    T = torch.ones((nx, ny)).float() / (nx * ny)
-    H = H.T + torch.ones((nx, ny)).float() / ny
+    T = torch.ones((nx, ny)).to(torch.float64) / (nx * ny)
+    H = H.T + torch.ones((nx, ny)).to(torch.float64) / ny
 
     # functions for OT
     def mina(H_in, epsilon):
-        in_a = torch.ones((nx, 1)).float() / nx
+        in_a = torch.ones((nx, 1)).to(torch.float64) / nx
         return -epsilon * torch.log(torch.sum(in_a * torch.exp(-H_in / epsilon), dim=0, keepdim=True))
 
     def minb(H_in, epsilon):
-        in_b = torch.ones((1, ny)).float() / ny
+        in_b = torch.ones((1, ny)).to(torch.float64) / ny
         return -epsilon * torch.log(torch.sum(in_b * torch.exp(-H_in / epsilon), dim=0, keepdim=True))
 
     def minaa(H_in, epsilon):
@@ -94,7 +94,7 @@ def cpot(L1, L2, crossC, intraC1, intraC2, inIter, outIter, H, l1, l2, l3, l4):
     def minbb(H_in, epsilon):
         return minb(H_in - torch.min(H_in, dim=1).values.view(-1, 1), epsilon) + torch.min(H_in, dim=1).values.view(-1, 1)
 
-    temp1 = 0.5 * (intraC1 ** 2) @ r @ torch.ones((1, ny)).float() + 0.5 * torch.ones((nx, 1)).float() @ c @ (intraC2 ** 2).T
+    temp1 = 0.5 * (intraC1 ** 2) @ r @ torch.ones((1, ny)).to(torch.float64) + 0.5 * torch.ones((nx, 1)).to(torch.float64) @ c @ (intraC2 ** 2).T
 
     resRecord = []
     WRecord = []

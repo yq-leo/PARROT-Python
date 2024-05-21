@@ -42,8 +42,8 @@ def get_cost(A1, A2, X1, X2, H, rwrIter, rwIter, alpha, beta, gamma):
 
     # rwr on the product graph
     crossC = crossC + alpha * rwrCost
-    L1 = A1 / A1.sum(1, keepdim=True)
-    L2 = A2 / A2.sum(1, keepdim=True)
+    L1 = A1 / A1.sum(1, keepdim=True).to(torch.float64)
+    L2 = A2 / A2.sum(1, keepdim=True).to(torch.float64)
 
     crossC = get_prod_rwr(L1, L2, crossC, H, beta, gamma, rwIter)
 
@@ -65,7 +65,7 @@ def cal_trans(A, X=None):
     n = A.shape[0]
 
     if X is None:
-        X = torch.ones((n, 1)).float()
+        X = torch.ones((n, 1)).to(torch.float64)
     X = X / torch.linalg.norm(X, dim=1, ord=2, keepdim=True)
     sim = X @ X.T
     T = sim * A
@@ -93,13 +93,13 @@ def get_sep_rwr(T1, T2, H, beta, sepRwrIter):
     n1, n2 = T1.shape[0], T2.shape[0]
     num_anchors = anchors1.shape[0]
 
-    e1 = torch.zeros((n1, num_anchors)).float()
-    e2 = torch.zeros((n2, num_anchors)).float()
+    e1 = torch.zeros((n1, num_anchors)).to(torch.float64)
+    e2 = torch.zeros((n2, num_anchors)).to(torch.float64)
     e1[(anchors1, torch.arange(num_anchors))] = 1
     e2[(anchors2, torch.arange(num_anchors))] = 1
 
-    r1 = torch.zeros((n1, num_anchors)).float()
-    r2 = torch.zeros((n2, num_anchors)).float()
+    r1 = torch.zeros((n1, num_anchors)).to(torch.float64)
+    r2 = torch.zeros((n2, num_anchors)).to(torch.float64)
 
     for i in tqdm(range(sepRwrIter), desc="Computing separate RWR scores"):
         r1_old = torch.clone(r1)
@@ -127,9 +127,9 @@ def get_cross_cost(X1, X2, H):
     X1_zero_pos = torch.where(X1.abs().sum(1) == 0)
     X2_zero_pos = torch.where(X2.abs().sum(1) == 0)
     if X1_zero_pos[0].shape[0] != 0:
-        X1[X1_zero_pos] = torch.ones(d).float()
+        X1[X1_zero_pos] = torch.ones(d).to(torch.float64)
     if X2_zero_pos[0].shape[0] != 0:
-        X2[X2_zero_pos] = torch.ones(d).float()
+        X2[X2_zero_pos] = torch.ones(d).to(torch.float64)
 
     X1 = X1 / torch.linalg.norm(X1, dim=1, ord=2, keepdim=True)
     X2 = X2 / torch.linalg.norm(X2, dim=1, ord=2, keepdim=True)
@@ -151,7 +151,7 @@ def get_intra_cost(X):
     _, d = X.shape
     X_zero_pos = torch.where(X.abs().sum(1) == 0)
     if X_zero_pos[0].shape[0] != 0:
-        X[X_zero_pos] = torch.ones(d).float()
+        X[X_zero_pos] = torch.ones(d).to(torch.float64)
     X = X / torch.linalg.norm(X, dim=1, ord=2, keepdim=True)
     intraCost = torch.exp(-(X @ X.T))
 
@@ -175,7 +175,7 @@ def get_prod_rwr(L1, L2, nodeCost, H, beta, gamma, prodRwrIter):
     eps = 1e-2
     nx, ny = H.T.shape
     HInd = torch.where(H.T == 1)
-    crossCost = torch.zeros((nx, ny)).float()
+    crossCost = torch.zeros((nx, ny)).to(torch.float64)
     for i in tqdm(range(prodRwrIter), desc="Computing product RWR scores"):
         rwCost_old = torch.clone(crossCost)
         crossCost = (1 + gamma * beta) * nodeCost + (1 - beta) * gamma * L1 @ crossCost @ L2.T
