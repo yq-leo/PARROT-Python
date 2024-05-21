@@ -32,9 +32,9 @@ def parrot(A1, A2, X1, X2, H, sepRwrIter, prodRwrIter, alpha, beta, gamma, inIte
     nx, ny = H.T.shape
 
     if torch.sum(A1.sum(1) == 0) != 0:
-        A1[torch.where(A1.sum(1) == 0)] = torch.ones(nx)
+        A1[torch.where(A1.sum(1) == 0)] = torch.ones(nx).int()
     if torch.sum(A2.sum(1) == 0) != 0:
-        A2[torch.where(A2.sum(1) == 0)] = torch.ones(ny)
+        A2[torch.where(A2.sum(1) == 0)] = torch.ones(ny).int()
 
     L1 = A1 / A1.sum(1, keepdim=True).to(torch.float64)
     L2 = A2 / A2.sum(1, keepdim=True).to(torch.float64)
