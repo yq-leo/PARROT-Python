@@ -101,7 +101,7 @@ def cpot(L1, L2, crossC, intraC1, intraC2, inIter, outIter, H, l1, l2, l3, l4):
     # outIter = min(outIter, int(np.max(crossC) * np.log(max(nx, ny) * (eps ** (-3)))))
     start_time = time.time()
     for i in tqdm(range(outIter), desc="Computing constraint proximal point iteration"):
-        T_old = T.copy()
+        T_old = torch.clone(T)
         CGW = temp1 - intraC1 @ T @ intraC2.T
         C = crossC - l2 * torch.log(L1 @ T @ L2.T) - l3 * torch.log(H) + l4 * CGW
 

@@ -70,7 +70,7 @@ def cal_trans(A, X=None):
     sim = X @ X.T
     T = sim * A
     for i in range(n):
-        T[i, torch.where(T[i] != 0)[0]] = softmax(T[i, torch.where(T[i] != 0)[0]])
+        T[i, torch.where(T[i] != 0)[0]] = softmax(T[i, torch.where(T[i] != 0)[0]], dim=0)
 
     return T
 
@@ -102,8 +102,8 @@ def get_sep_rwr(T1, T2, H, beta, sepRwrIter):
     r2 = torch.zeros((n2, num_anchors)).float()
 
     for i in tqdm(range(sepRwrIter), desc="Computing separate RWR scores"):
-        r1_old = r1.copy()
-        r2_old = r2.copy()
+        r1_old = torch.clone(r1)
+        r2_old = torch.clone(r2)
         r1 = (1 - beta) * T1 @ r1 + beta * e1
         r2 = (1 - beta) * T2 @ r2 + beta * e2
         diff = torch.max(torch.max(torch.abs(r1 - r1_old)), torch.max(torch.abs(r2 - r2_old)))
@@ -177,7 +177,7 @@ def get_prod_rwr(L1, L2, nodeCost, H, beta, gamma, prodRwrIter):
     HInd = torch.where(H.T == 1)
     crossCost = torch.zeros((nx, ny)).float()
     for i in tqdm(range(prodRwrIter), desc="Computing product RWR scores"):
-        rwCost_old = crossCost.copy()
+        rwCost_old = torch.clone(crossCost)
         crossCost = (1 + gamma * beta) * nodeCost + (1 - beta) * gamma * L1 @ crossCost @ L2.T
         crossCost[HInd] = 0
         if torch.max(torch.abs(crossCost - rwCost_old)) < eps:
