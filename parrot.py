@@ -86,7 +86,7 @@ def cpot(L1, L2, crossC, intraC1, intraC2, inIter, outIter, H, l1, l2, l3, l4):
 
     def minb(H_in, epsilon):
         in_b = torch.ones((1, ny)).to(torch.float64) / ny
-        return -epsilon * torch.log(torch.sum(in_b * torch.exp(-H_in / epsilon), dim=0, keepdim=True))
+        return -epsilon * torch.log(torch.sum(in_b * torch.exp(-H_in / epsilon), dim=1, keepdim=True))
 
     def minaa(H_in, epsilon):
         return mina(H_in - torch.min(H_in, dim=0).values.view(1, -1), epsilon) + torch.min(H_in, dim=0).values.view(1, -1)
