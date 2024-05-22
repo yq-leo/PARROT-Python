@@ -4,3 +4,4 @@ __pycache__/
 mid/*
 .ipynb_checkpoints/
 datasets/mat/
+toy.ipynb
