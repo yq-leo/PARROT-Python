@@ -4,9 +4,10 @@ from utils import *
 from tqdm import tqdm
 
 
-def parrot(A1, A2, X1, X2, H, sepRwrIter, prodRwrIter, alpha, beta, gamma, inIter, outIter, l1, l2, l3, l4):
+def parrot(dataset_name, A1, A2, X1, X2, H, sepRwrIter, prodRwrIter, alpha, beta, gamma, inIter, outIter, l1, l2, l3, l4):
     """
     Position-aware optimal transport for network alignment.
+    :param dataset_name: dataset name
     :param A1: adjacency matrix of graph G1, shape=(n1, n1)
     :param A2: adjacency matrix of graph G2, shape=(n2, n2)
     :param X1: input node attributes of graph G1, shape=(n1, d)
@@ -39,7 +40,7 @@ def parrot(A1, A2, X1, X2, H, sepRwrIter, prodRwrIter, alpha, beta, gamma, inIte
     L1 = A1 / A1.sum(1, keepdim=True).to(torch.float64)
     L2 = A2 / A2.sum(1, keepdim=True).to(torch.float64)
 
-    crossC, intraC1, intraC2 = get_cost(A1, A2, X1, X2, H, sepRwrIter, prodRwrIter, alpha, beta, gamma)
+    crossC, intraC1, intraC2 = get_cost(dataset_name, A1, A2, X1, X2, H, sepRwrIter, prodRwrIter, alpha, beta, gamma)
     T, W, res = cpot(L1, L2, crossC, intraC1, intraC2, inIter, outIter, H, l1, l2, l3, l4)
 
     return T, W, res

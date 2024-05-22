@@ -1,12 +1,15 @@
 import torch
 from torch.nn.functional import softmax
+import numpy as np
 import time
+import os
 from tqdm import tqdm
 
 
-def get_cost(A1, A2, X1, X2, H, rwrIter, rwIter, alpha, beta, gamma):
+def get_cost(dataset, A1, A2, X1, X2, H, rwrIter, rwIter, alpha, beta, gamma):
     """
     Calculate cross/intra-graph cost based on attribute/rw
+    :param dataset: dataset name
     :param A1: adjacency matrix of graph G1, shape=(n1, n1)
     :param A2: adjacency matrix of graph G2, shape=(n2, n2)
     :param X1: input node attributes of graph G1, shape=(n1, d)
@@ -49,6 +52,10 @@ def get_cost(A1, A2, X1, X2, H, rwrIter, rwIter, alpha, beta, gamma):
 
     end_time = time.time()
     print(f"Time for cost matrix: {end_time - start_time:.2f}s")
+
+    if not os.path.exists(f"datasets/rwr"):
+        os.makedirs(f"datasets/rwr")
+    np.savez(f"datasets/rwr/rwr_cost_{dataset}.npz", rwr1=rwr1.numpy(), rwr2=rwr2.numpy(), cross_rwr=rwrCost.numpy())
 
     return crossC, intraC1, intraC2
 
@@ -98,8 +105,8 @@ def get_sep_rwr(T1, T2, H, beta, sepRwrIter):
     e1[(anchors1, torch.arange(num_anchors))] = 1
     e2[(anchors2, torch.arange(num_anchors))] = 1
 
-    r1 = torch.ones((n1, num_anchors)).to(torch.float64) / num_anchors
-    r2 = torch.ones((n2, num_anchors)).to(torch.float64) / num_anchors
+    r1 = torch.zeros((n1, num_anchors)).to(torch.float64)
+    r2 = torch.zeros((n2, num_anchors)).to(torch.float64)
 
     for i in tqdm(range(sepRwrIter), desc="Computing separate RWR scores"):
         r1_old = torch.clone(r1)
