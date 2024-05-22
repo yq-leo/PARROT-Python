@@ -98,8 +98,8 @@ def get_sep_rwr(T1, T2, H, beta, sepRwrIter):
     e1[(anchors1, torch.arange(num_anchors))] = 1
     e2[(anchors2, torch.arange(num_anchors))] = 1
 
-    r1 = torch.zeros((n1, num_anchors)).to(torch.float64)
-    r2 = torch.zeros((n2, num_anchors)).to(torch.float64)
+    r1 = torch.ones((n1, num_anchors)).to(torch.float64) / num_anchors
+    r2 = torch.ones((n2, num_anchors)).to(torch.float64) / num_anchors
 
     for i in tqdm(range(sepRwrIter), desc="Computing separate RWR scores"):
         r1_old = torch.clone(r1)
