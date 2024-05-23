@@ -36,24 +36,6 @@ def get_hits(s, gnd, H, topK):
     return p, mrr
 
 
-# def setdiff(a, b):
-#     """
-#     Find the difference of two arrays.
-#     :param a: array 1 (n1 x 2)
-#     :param b: array 2 (n2 x 2)
-#     :return: c: difference of a and b (n3 x 2)
-#     """
-#     # Use a structured array to perform row-wise set difference
-#     dtype = np.dtype([('row', np.int64, 2)])  # Define dtype for structured array
-#     A_struct = a.copy().view(dtype).reshape(-1)  # Convert A
-#     B_struct = b.copy().view(dtype).reshape(-1)  # Convert B
-#
-#     # Compute set difference
-#     C_struct = np.setdiff1d(A_struct, B_struct)
-#     c = C_struct.view(a.dtype).reshape(-1, 2)  # Convert back to original array form
-#
-#     return c
-
 def setdiff(a, b):
     """
     Find the difference of two tensors.

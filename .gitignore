@@ -3,5 +3,7 @@
 __pycache__/
 mid/*
 .ipynb_checkpoints/
+
 datasets/mat/
 datasets/rwr/
+datasets/np/
