@@ -27,6 +27,7 @@ You can run `main.py` using one of the following datasets
 | cora             | 7.20s + 8.07s      | 3.11s + 7.78s       |
 | foursquare-twitter | 6.89s + 17.59s    | 23.92s + 46.93s     |
 | phone-email      | 0.32s + 1.18s      | 0.38s + 1.60s       |
+
 \* Run on Apple M1 Pro 16GB
 
 ### Usage
