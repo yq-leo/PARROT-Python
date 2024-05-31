@@ -1,5 +1,5 @@
 import torch
-
+from torch.nn.functional import softmax
 
 def get_hits(s, gnd, H, topK):
     """
@@ -13,11 +13,23 @@ def get_hits(s, gnd, H, topK):
         mrr: Mean Reciprocal Rank
     """
 
+    s1 = s / s.sum(1, keepdim=True)
+    s2 = s / s.sum(0, keepdim=True)
+    entropy1 = -torch.sum(s1 * torch.log(s1), dim=1)
+    entropy2 = -torch.sum(s2 * torch.log(s2), dim=1)
+
+    print(f"Entropy1: min={entropy1.min().item():.4f}, max={entropy1.max().item():.4f}, mean={entropy1.mean().item():.4f}")
+    print(f"Entropy2: min={entropy2.min().item():.4f}, max={entropy2.max().item():.4f}, mean={entropy2.mean().item():.4f}")
+
     sortI = torch.argsort(-s, dim=1)
+
     anchors1, anchors2 = torch.where(H.T == 1)
     anchors = torch.vstack((anchors1, anchors2)).T
     tests = setdiff(gnd, anchors)
     test_len = tests.shape[0]
+
+    hit1 = sortI[tests[:, 0], 0].numpy().tolist()
+    print(f"Upperbound: {len(set(hit1)) / test_len:.4f}")
 
     ind = []
     mrr = 0.0
