@@ -20,13 +20,14 @@ You can run `main.py` using one of the following datasets
 - phone-email
 
 ### Efficiency
-| Dataset / Runtime    | MATLAB            | PyTorch           |
+| Dataset / Runtime    | MATLAB            | PyTorch (CPU)           |
 |----------------------|--------------------|---------------------|
 | ACM_DBLP_A       | 12.32s + 53.95s    | 110.55s + 241.52s   |
 | ACM_DBLP_P       | 15.44s + 59.52s    | 89.29s + 241.11s    |
 | cora             | 7.20s + 8.07s      | 3.11s + 7.78s       |
 | foursquare-twitter | 6.89s + 17.59s    | 23.92s + 46.93s     |
 | phone-email      | 0.32s + 1.18s      | 0.38s + 1.60s       |
+\* Run on Apple M1 Pro 16GB
 
 ### Usage
 
