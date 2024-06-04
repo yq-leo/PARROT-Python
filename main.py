@@ -2,6 +2,7 @@ import json
 from utils import *
 from args import *
 from parrot import parrot
+import torch
 
 
 if __name__ == "__main__":
@@ -33,3 +34,5 @@ if __name__ == "__main__":
     for i in range(len(p)):
         print(f"Top-{settings['topK'][i]}: {p[i]:.3f}")
     print(f"MRR: {mrr:.3f}")
+
+    torch.save(S, f"outputs/parrot_{args.dataset}_similarity.pt")
