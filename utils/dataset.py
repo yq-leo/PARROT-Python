@@ -146,3 +146,48 @@ def community_shuffle(n1, n2, G, partitions, gnd, num_train, shuffle):
     return H.int()
 
 
+def perturb_edges(adj, ratio):
+    """
+    Adding structural noise through edge perturbation.
+    :param adj: adjacency matrix of the graph
+    :param ratio: edge noise ratio
+    :return:
+    """
+
+    num_nodes, num_edges = adj.shape[0], int(adj.sum() / 2)
+    num_perturb_edges = int(num_edges * ratio)
+
+    cnt = 0
+    while cnt < num_perturb_edges:
+        u, v = np.random.randint(0, num_nodes), np.random.randint(0, num_nodes)
+        if adj[u, v] == 1:
+            adj[u, v] = 0
+            adj[v, u] = 0
+            if not nx.is_connected(nx.from_numpy_array(adj.numpy())):
+                adj[u, v] = 1
+                adj[v, u] = 1
+            else:
+                cnt += 1
+        else:
+            adj[u, v] = 1
+            adj[v, u] = 1
+            cnt += 1
+
+    return adj
+
+
+def perturb_attr(x, ratio):
+    """
+    Adding attribute noise through feature perturbation.
+    :param x: input node attributes
+    :param ratio: noise ratio
+    :return: perturbed node attributes
+    """
+
+    num_node, num_attr = x.shape
+    num_perturb_attrs = int(num_attr * ratio)
+
+    perturbed_attr = np.random.choice(num_attr, num_perturb_attrs, replace=False)
+    x[:, perturbed_attr] = 1 - x[:, perturbed_attr]
+
+    return x

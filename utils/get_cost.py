@@ -56,10 +56,6 @@ def get_cost(dataset, A1, A2, X1, X2, H, rwrIter, rwIter, alpha, beta, gamma, no
     end_time = time.time()
     print(f"Time for cost matrix: {end_time - start_time:.2f}s")
 
-    if not os.path.exists(f"datasets/cost"):
-        os.makedirs(f"datasets/cost")
-    np.savez(f"datasets/cost/cost_{dataset}.npz", crossC=crossC.numpy(), intraC1=intraC1.numpy(), intraC2=intraC2.numpy())
-
     return crossC, intraC1, intraC2
 
 
