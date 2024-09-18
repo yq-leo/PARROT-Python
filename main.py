@@ -60,7 +60,9 @@ if __name__ == "__main__":
         test_mrr_list.append(test_mrr.item())
 
     test_p = np.mean(test_p_list, axis=0)
+    test_p_std = np.std(test_p_list, axis=0)
     test_mrr = np.mean(test_mrr_list)
+    test_mrr_std = np.std(test_mrr_list)
     if args.record:
         exp_name = "edge_noise"
         if not os.path.exists("results"):
@@ -68,9 +70,9 @@ if __name__ == "__main__":
         if not os.path.exists(f"results/{exp_name}_test.csv"):
             with open(f"results/{exp_name}_test.csv", "w", newline='') as f:
                 writer = csv.writer(f)
-                writer.writerow([""] + [f"Hit@{k}" for k in settings["topK"]] + ["MRR"])
+                writer.writerow([""] + [f"Hit@{k}" for k in settings["topK"]] + ["MRR"] + [f"std@{k}" for k in settings["topK"]] + ["std_MRR"])
 
         with open(f"results/{exp_name}_test.csv", "a", newline='') as f:
             writer = csv.writer(f)
             header = f"{args.dataset}_({args.edge_noise:.1f})"
-            writer.writerow([header] + [f"{p:.3f}" for p in test_p] + [f"{test_mrr:.3f}"])
+            writer.writerow([header] + [f"{p:.3f}" for p in test_p] + [f"{test_mrr:.3f}"] + [f"{p:.3f}" for p in test_p_std] + [f"{test_mrr_std:.3f}"])
