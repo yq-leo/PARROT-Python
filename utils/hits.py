@@ -1,5 +1,5 @@
 import torch
-from torch.nn.functional import softmax
+
 
 def get_hits(s, gnd, H, topK):
     """
@@ -9,43 +9,49 @@ def get_hits(s, gnd, H, topK):
     :param H: anchor links, shape=(n2, n1)
     :param topK: top-K list
     :return:
-        p: Hits@K
-        mrr: Mean Reciprocal Rank
+        train_p: Hits@K for training pairs
+        train_mrr: Mean Reciprocal Rank for training pairs
+        test_p: Hits@K for test pairs
+        test_mrr: Mean Reciprocal Rank for test pairs
     """
-
-    s1 = s / s.sum(1, keepdim=True)
-    s2 = s / s.sum(0, keepdim=True)
-    entropy1 = -torch.sum(s1 * torch.log(s1), dim=1)
-    entropy2 = -torch.sum(s2 * torch.log(s2), dim=1)
-
-    print(f"Entropy1: min={entropy1.min().item():.4f}, max={entropy1.max().item():.4f}, mean={entropy1.mean().item():.4f}")
-    print(f"Entropy2: min={entropy2.min().item():.4f}, max={entropy2.max().item():.4f}, mean={entropy2.mean().item():.4f}")
 
     sortI = torch.argsort(-s, dim=1)
 
     anchors1, anchors2 = torch.where(H.T == 1)
     anchors = torch.vstack((anchors1, anchors2)).T
     tests = setdiff(gnd, anchors)
-    test_len = tests.shape[0]
 
-    hit1 = sortI[tests[:, 0], 0].numpy().tolist()
-    print(f"Upperbound: {len(set(hit1)) / test_len:.4f}")
+    num_train, num_test = anchors.shape[0], tests.shape[0]
 
-    ind = []
-    mrr = 0.0
-    for i in range(test_len):
-        tempInd = torch.where(sortI[tests[i, 0]] == tests[i, 1])[0][0]
-        ind.append(tempInd)
-        mrr += 1 / (tempInd + 1)
+    train_ind = []
+    train_mrr = 0.0
+    for i in range(num_train):
+        tempInd = torch.where(sortI[anchors[i, 0]] == anchors[i, 1])[0][0]
+        train_ind.append(tempInd)
+        train_mrr += 1 / (tempInd + 1)
 
-    mrr = mrr / test_len
+    train_mrr = train_mrr / num_train
 
-    p = []
+    train_p = []
     for i in range(len(topK)):
-        p.append(torch.sum(torch.tensor(ind) < topK[i]))
-    p = torch.tensor(p).to(torch.float64) / test_len
+        train_p.append(torch.sum(torch.tensor(train_ind) < topK[i]))
+    train_p = torch.tensor(train_p).to(torch.float64) / num_train
 
-    return p, mrr
+    test_ind = []
+    test_mrr = 0.0
+    for i in range(num_test):
+        tempInd = torch.where(sortI[tests[i, 0]] == tests[i, 1])[0][0]
+        test_ind.append(tempInd)
+        test_mrr += 1 / (tempInd + 1)
+
+    test_mrr = test_mrr / num_test
+
+    test_p = []
+    for i in range(len(topK)):
+        test_p.append(torch.sum(torch.tensor(test_ind) < topK[i]))
+    test_p = torch.tensor(test_p).to(torch.float64) / num_test
+
+    return train_p, train_mrr, test_p, test_mrr
 
 
 def setdiff(a, b):

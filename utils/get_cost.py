@@ -6,7 +6,7 @@ import os
 from tqdm import tqdm
 
 
-def get_cost(dataset, A1, A2, X1, X2, H, rwrIter, rwIter, alpha, beta, gamma):
+def get_cost(dataset, A1, A2, X1, X2, H, rwrIter, rwIter, alpha, beta, gamma, no_joint_rwr=False):
     """
     Calculate cross/intra-graph cost based on attribute/rw
     :param dataset: dataset name
@@ -20,6 +20,7 @@ def get_cost(dataset, A1, A2, X1, X2, H, rwrIter, rwIter, alpha, beta, gamma):
     :param alpha: weight balancing attribute cost and rwr cost
     :param beta: rwr restart ratio
     :param gamma: discounted factor of Bellman equation
+    :param no_joint_rwr: whether to use joint rwr
     :return:
         crossC: cross-graph cost matrix, shape=(n1, n2)
         intraC1: intra-graph cost matrix for graph 1, shape=(n1, n1)
@@ -32,6 +33,7 @@ def get_cost(dataset, A1, A2, X1, X2, H, rwrIter, rwIter, alpha, beta, gamma):
     T1 = cal_trans(A1, None)
     T2 = cal_trans(A2, None)
     rwr1, rwr2 = get_sep_rwr(T1, T2, H, beta, rwrIter)
+
     rwrCost = get_cross_cost(rwr1, rwr2, H)
 
     # cross/intra-graph cost based on node attributes
@@ -48,14 +50,15 @@ def get_cost(dataset, A1, A2, X1, X2, H, rwrIter, rwIter, alpha, beta, gamma):
     L1 = A1 / A1.sum(1, keepdim=True).to(torch.float64)
     L2 = A2 / A2.sum(1, keepdim=True).to(torch.float64)
 
-    crossC = get_prod_rwr(L1, L2, crossC, H, beta, gamma, rwIter)
+    if not no_joint_rwr:
+        crossC = get_prod_rwr(L1, L2, crossC, H, beta, gamma, rwIter)
 
     end_time = time.time()
     print(f"Time for cost matrix: {end_time - start_time:.2f}s")
 
-    if not os.path.exists(f"datasets/rwr"):
-        os.makedirs(f"datasets/rwr")
-    np.savez(f"datasets/rwr/rwr_cost_{dataset}.npz", rwr1=rwr1.numpy(), rwr2=rwr2.numpy(), cross_rwr=rwrCost.numpy())
+    if not os.path.exists(f"datasets/cost"):
+        os.makedirs(f"datasets/cost")
+    np.savez(f"datasets/cost/cost_{dataset}.npz", crossC=crossC.numpy(), intraC1=intraC1.numpy(), intraC2=intraC2.numpy())
 
     return crossC, intraC1, intraC2
 
@@ -118,6 +121,28 @@ def get_sep_rwr(T1, T2, H, beta, sepRwrIter):
             break
 
     return r1, r2
+
+
+def get_filter_cost(r1, r2, X1, X2, H):
+    def get_normalized(x1, x2):
+        _, d = x1.shape
+        x1_zero_pos = torch.where(x1.abs().sum(1) == 0)
+        x2_zero_pos = torch.where(x2.abs().sum(1) == 0)
+        if x1_zero_pos[0].shape[0] != 0:
+            x1[x1_zero_pos] = torch.ones(d).to(torch.float64)
+        if x2_zero_pos[0].shape[0] != 0:
+            x2[x2_zero_pos] = torch.ones(d).to(torch.float64)
+        x1 = x1 / torch.linalg.norm(x1, dim=1, ord=2, keepdim=True)
+        x2 = x2 / torch.linalg.norm(x2, dim=1, ord=2, keepdim=True)
+        return x1, x2
+
+    r1, r2 = get_normalized(r1, r2)
+    X1, X2 = get_normalized(X1, X2)
+
+    cost = torch.exp(-(r1 @ r2.T) * (X1 @ X2.T))
+    cost[torch.where(H.T == 1)] = 0
+
+    return cost
 
 
 def get_cross_cost(X1, X2, H):
