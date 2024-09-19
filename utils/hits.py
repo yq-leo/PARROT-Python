@@ -1,4 +1,5 @@
 import torch
+import numpy as np
 
 
 def get_hits(s, gnd, H, topK):
@@ -72,3 +73,16 @@ def setdiff(a, b):
     c = a[mask]
 
     return c
+
+
+def rm_out(arr):
+    """
+    Remove outliers from an array
+    :param arr: input array
+    :return:  without outliers
+    """
+    arr = np.sort(arr)
+    if len(arr) <= 3:
+        return arr
+    num_rm = len(arr) // 2
+    return arr[int(num_rm / 2) + num_rm % 2: -(num_rm // 2)]

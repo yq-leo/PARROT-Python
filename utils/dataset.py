@@ -5,6 +5,7 @@ import os
 import networkx as nx
 from collections import defaultdict
 import random
+import tqdm
 
 
 def load_data(file_path, G1_name, G2_name, use_attr, shuffle='off'):
@@ -63,18 +64,18 @@ def load_data(file_path, G1_name, G2_name, use_attr, shuffle='off'):
     for edge in G1.edges():
         G1[edge[0]][edge[1]]['weight'] = 1
 
-    partitions = nx.community.louvain_communities(G1)
-    partitions = sorted(partitions, key=lambda x: len(x))
-
-    partition_map = {node: idx for idx, com in enumerate(partitions) for node in com}
-    stat = defaultdict(int)
-    train = torch.where(H.T == 1)[0]
-    for node in train:
-        stat[partition_map[int(node)]] += 1
-    print(f"Distribution of given anchor nodes: {[(i, stat[i]) for i in range(len(partitions))]}")
-
-    if shuffle != 'off':
-        H = community_shuffle(n1, n2, G1, partitions, gnd, int(num_train), shuffle)
+    # partitions = nx.community.louvain_communities(G1)
+    # partitions = sorted(partitions, key=lambda x: len(x))
+    #
+    # partition_map = {node: idx for idx, com in enumerate(partitions) for node in com}
+    # stat = defaultdict(int)
+    # train = torch.where(H.T == 1)[0]
+    # for node in train:
+    #     stat[partition_map[int(node)]] += 1
+    # print(f"Distribution of given anchor nodes: {[(i, stat[i]) for i in range(len(partitions))]}")
+    #
+    # if shuffle != 'off':
+    #     H = community_shuffle(n1, n2, G1, partitions, gnd, int(num_train), shuffle)
 
     return adj_mat1, adj_mat2, x1, x2, gnd, H
 
@@ -157,21 +158,24 @@ def perturb_edges(adj, ratio):
     num_nodes, num_edges = adj.shape[0], int(adj.sum() / 2)
     num_perturb_edges = int(num_edges * ratio)
 
-    cnt = 0
-    while cnt < num_perturb_edges:
-        u, v = np.random.randint(0, num_nodes), np.random.randint(0, num_nodes)
-        if adj[u, v] == 1:
-            adj[u, v] = 0
-            adj[v, u] = 0
-            if not nx.is_connected(nx.from_numpy_array(adj.numpy())):
+    with tqdm.tqdm(total=num_perturb_edges, desc="Adding edge noise") as pbar:
+        cnt = 0
+        while cnt < num_perturb_edges:
+            u, v = np.random.randint(0, num_nodes), np.random.randint(0, num_nodes)
+            if adj[u, v] == 1:
+                adj[u, v] = 0
+                adj[v, u] = 0
+                if not nx.is_connected(nx.from_numpy_array(adj.numpy())):
+                    adj[u, v] = 1
+                    adj[v, u] = 1
+                else:
+                    cnt += 1
+                    pbar.update(1)
+            else:
                 adj[u, v] = 1
                 adj[v, u] = 1
-            else:
                 cnt += 1
-        else:
-            adj[u, v] = 1
-            adj[v, u] = 1
-            cnt += 1
+                pbar.update(1)
 
     return adj
 

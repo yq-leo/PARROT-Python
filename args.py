@@ -30,5 +30,7 @@ def make_args():
     parser.add_argument('--attr_noise', dest='attr_noise', type=float, default=0.0, help='attribute noise')
     parser.add_argument('--use_attr', dest='use_attr', action='store_true', help='use input node attributes')
     parser.add_argument('--runs', dest='runs', type=int, default=1, help='number of runs')
+    parser.add_argument('--exp_name', dest='exp_name', type=str, default='exp', help='experiment name')
+    parser.add_argument('--robust', dest='robust', action='store_true', help='remove metric outliers')
 
     return parser.parse_args()
