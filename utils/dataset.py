@@ -38,11 +38,11 @@ def load_data(file_path, G1_name, G2_name, use_attr, shuffle='off'):
     H = data['H'].astype(int)
 
     if type(adj_mat1) is not np.ndarray:
-        adj_mat1 = adj_mat1.A
+        adj_mat1 = adj_mat1.toarray()
     if type(adj_mat2) is not np.ndarray:
-        adj_mat2 = adj_mat2.A
+        adj_mat2 = adj_mat2.toarray()
     if type(H) is not np.ndarray:
-        H = H.A
+        H = H.toarray()
 
     adj_mat1 = torch.from_numpy(adj_mat1).int()
     adj_mat2 = torch.from_numpy(adj_mat2).int()
