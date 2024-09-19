@@ -64,7 +64,7 @@ if __name__ == "__main__":
     test_mrr = np.mean(test_mrr_list)
     test_mrr_std = np.std(test_mrr_list)
     if args.record:
-        exp_name = "edge_noise"
+        exp_name = "edge_noise_new"
         if not os.path.exists("results"):
             os.makedirs("results")
         if not os.path.exists(f"results/{exp_name}_test.csv"):
