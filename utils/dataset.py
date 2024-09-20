@@ -195,7 +195,7 @@ def perturb_attr(x, ratio, strong_noise=False):
     if strong_noise:
         for idx in range(num_node):
             perturbed_attr = np.random.choice(num_attr, num_perturb_attrs, replace=False)
-            x[:, perturbed_attr] = 1 - x[:, perturbed_attr]
+            x[idx, perturbed_attr] = 1 - x[idx, perturbed_attr]
 
     else:
         perturbed_attr = np.random.choice(num_attr, num_perturb_attrs, replace=False)
