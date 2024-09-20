@@ -180,18 +180,25 @@ def perturb_edges(adj, ratio):
     return adj
 
 
-def perturb_attr(x, ratio):
+def perturb_attr(x, ratio, strong_noise=False):
     """
     Adding attribute noise through feature perturbation.
     :param x: input node attributes
     :param ratio: noise ratio
+    :param strong_noise: whether to use strong noise
     :return: perturbed node attributes
     """
 
     num_node, num_attr = x.shape
     num_perturb_attrs = int(num_attr * ratio)
 
-    perturbed_attr = np.random.choice(num_attr, num_perturb_attrs, replace=False)
-    x[:, perturbed_attr] = 1 - x[:, perturbed_attr]
+    if strong_noise:
+        for idx in range(num_node):
+            perturbed_attr = np.random.choice(num_attr, num_perturb_attrs, replace=False)
+            x[:, perturbed_attr] = 1 - x[:, perturbed_attr]
+
+    else:
+        perturbed_attr = np.random.choice(num_attr, num_perturb_attrs, replace=False)
+        x[:, perturbed_attr] = 1 - x[:, perturbed_attr]
 
     return x

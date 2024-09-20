@@ -43,7 +43,7 @@ if __name__ == "__main__":
         start_time = time.time()
         if x1_org is not None and x2_org is not None:
             x1 = torch.clone(x1_org)
-            x2 = perturb_attr(torch.clone(x2_org), args.attr_noise)
+            x2 = perturb_attr(torch.clone(x2_org), args.attr_noise, args.strong_noise)
         else:
             x1 = None
             x2 = None
@@ -90,7 +90,7 @@ if __name__ == "__main__":
         with open(out_path, "a", newline='') as f:
             writer = csv.writer(f)
             if exp_name == "edge_noise":
-                header = f"{args.dataset}_({args.edge_noise:.1f}_{'robust' if args.robust else ''})"
+                header = f"{args.dataset}_({args.edge_noise:.1f}{'_robust' if args.robust else ''}{'_strong' if args.strong_noise else ''})"
             else:
-                header = f"{args.dataset}_({args.attr_noise:.1f}_{'robust' if args.robust else ''})"
+                header = f"{args.dataset}_({args.attr_noise:.1f}{'_robust' if args.robust else ''}{'_strong' if args.strong_noise else ''})"
             writer.writerow([header] + [f"{p:.3f}" for p in test_p] + [f"{test_mrr:.3f}"] + [f"{p:.3f}" for p in test_p_std] + [f"{test_mrr_std:.3f}"])

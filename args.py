@@ -32,5 +32,6 @@ def make_args():
     parser.add_argument('--runs', dest='runs', type=int, default=1, help='number of runs')
     parser.add_argument('--exp_name', dest='exp_name', type=str, default='exp', help='experiment name')
     parser.add_argument('--robust', dest='robust', action='store_true', help='remove metric outliers')
+    parser.add_argument('--strong_noise', dest='strong_noise', action='store_true', help='use strong attribute noise')
 
     return parser.parse_args()
