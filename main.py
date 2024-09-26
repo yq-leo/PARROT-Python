@@ -68,7 +68,7 @@ if __name__ == "__main__":
         if not os.path.exists(out_file):
             with open(out_file, "w", newline='') as f:
                 writer = csv.writer(f)
-                writer.writerow([""] + [f"Time_{key}" for key in time_recorder])
+                writer.writerow(["Dataset"] + [f"Time_{key}" for key in time_recorder])
 
         with open(out_file, "a", newline='') as f:
             writer = csv.writer(f)
