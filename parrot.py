@@ -145,13 +145,13 @@ def cpot(L1, L2, crossC, intraC1, intraC2, inIter, outIter, H, l1, l2, l3, l4):
         CGW = temp1 - intraC1 @ T @ intraC2.T
         C = crossC - l2 * torch.log(L1.T @ T @ L2) - l3 * torch.log(H) + l4 * CGW
 
-        wasserstein = torch.sum(crossC * T)
-        edge_loss = torch.sum(CGW * T)
-        neigh_loss = -torch.sum(torch.log(L1.T @ T @ L2) * T) + torch.sum(torch.log(T) * T)
-        align_loss = -torch.sum(torch.log(H) * T) + torch.sum(torch.log(T) * T)
-        entropy = -torch.sum(T * torch.log(T))
-        print(f"Iter {i}: wasserstein={wasserstein:.6f}, edge={edge_loss:.6f}, neigh={neigh_loss:.6f}, align={align_loss:.6f}, entropy={entropy:.6f},"
-              f"s={torch.sum(T):.6f}, s_hat={torch.sum(L1.T @ T @ L2):.6f}")
+        # wasserstein = torch.sum(crossC * T)
+        # edge_loss = torch.sum(CGW * T)
+        # neigh_loss = -torch.sum(torch.log(L1.T @ T @ L2) * T) + torch.sum(torch.log(T) * T)
+        # align_loss = -torch.sum(torch.log(H) * T) + torch.sum(torch.log(T) * T)
+        # entropy = -torch.sum(T * torch.log(T))
+        # print(f"Iter {i}: wasserstein={wasserstein:.6f}, edge={edge_loss:.6f}, neigh={neigh_loss:.6f}, align={align_loss:.6f}, entropy={entropy:.6f},"
+        #       f"s={torch.sum(T):.6f}, s_hat={torch.sum(L1.T @ T @ L2):.6f}")
 
         if i == 0:
             C_old = C
