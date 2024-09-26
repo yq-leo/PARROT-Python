@@ -31,9 +31,9 @@ def get_cost(dataset, A1, A2, X1, X2, H, rwrIter, rwIter, alpha, beta, gamma, no
     start_time = time.time()
 
     # calculate RWR
+    start_rwr_time = time.time()
     T1 = cal_trans(A1, None)
     T2 = cal_trans(A2, None)
-    start_rwr_time = time.time()
     rwr1, rwr2 = get_sep_rwr(T1, T2, H, beta, rwrIter)
     end_rwr_time = time.time()
     time_recorder['sep_rwr'].append(end_rwr_time - start_rwr_time)
