@@ -3,9 +3,7 @@ from argparse import ArgumentParser
 
 def make_args():
     parser = ArgumentParser()
-    parser.add_argument('--dataset', dest='dataset', type=str, default='ACM-DBLP-A',
-                        choices=['ACM-DBLP-A', 'ACM-DBLP-P', 'cora', 'foursquare-twitter', 'phone-email', 'Douban', 'flickr-lastfm'],
-                        help='datasets: ACM-DBLP-A; ACM-DBLP-P; cora; foursquare-twitter; phone-email; Douban; flickr-lastfm')
+    parser.add_argument('--dataset', dest='dataset', type=str, default='G500', help='datasets')
     parser.add_argument('--shuffle', dest='shuffle', type=str, default='off',
                         choices=['off', 'imbalanced', 'balanced'], help='shuffle options: off; imbalanced; balanced')
     parser.add_argument('--no_edge_reg', dest='no_edge_reg', action='store_true',
@@ -24,5 +22,6 @@ def make_args():
     parser.add_argument('--inIter', dest='inIter', type=int, default=-1, help='number of inner iterations')
     parser.add_argument('--outIter', dest='outIter', type=int, default=-1, help='number of outer iterations')
     parser.add_argument('--self_train', dest='self_train', type=str, default='off', choices=['off', 'god', 'hit'])
+    parser.add_argument('--runs', dest='runs', type=int, default=1, help='number of runs')
 
     return parser.parse_args()

@@ -1,0 +1,16 @@
+python main.pu --dataset=G500 --runs=3 --record
+python main.pu --dataset=G1000 --runs=3 --record
+python main.pu --dataset=G2000 --runs=3 --record
+python main.pu --dataset=G3000 --runs=3 --record
+python main.pu --dataset=G4000 --runs=3 --record
+python main.pu --dataset=G5000 --runs=3 --record
+python main.pu --dataset=G6000 --runs=3 --record
+python main.pu --dataset=G7000 --runs=3 --record
+python main.pu --dataset=G8000 --runs=3 --record
+python main.pu --dataset=G9000 --runs=3 --record
+python main.pu --dataset=G10000 --runs=3 --record
+python main.pu --dataset=G11000 --runs=3 --record
+python main.pu --dataset=G12000 --runs=3 --record
+python main.pu --dataset=G13000 --runs=3 --record
+python main.pu --dataset=G14000 --runs=3 --record
+python main.pu --dataset=G15000 --runs=3 --record

@@ -8,7 +8,7 @@ import os
 
 
 def parrot(dataset_name, A1, A2, X1, X2, H, sepRwrIter, prodRwrIter, alpha, beta, gamma, inIter, outIter, l1, l2, l3, l4,
-           no_joint_rwr=False, use_pgna=False, use_num=False, use_pgna_num=False, self_train='off', gnd=None):
+           no_joint_rwr=False, use_pgna=False, use_num=False, use_pgna_num=False, self_train='off', gnd=None, time_recorder=None):
     """
     Position-aware optimal transport for network alignment.
     :param dataset_name: dataset name
@@ -34,6 +34,7 @@ def parrot(dataset_name, A1, A2, X1, X2, H, sepRwrIter, prodRwrIter, alpha, beta
     :param use_pgna_num: whether to use PGNA embeddings for non-uniform marginal distribution
     :param self_train: whether to use self-training
     :param gnd: ground truth alignment (training + test pairs)
+    :param time_recorder: time recorder
     :return:
         T: trasnport plan/alignment score, shape=(n1, n2)
         W: Wasserstein distance along the distance, shape=outIter
@@ -50,13 +51,7 @@ def parrot(dataset_name, A1, A2, X1, X2, H, sepRwrIter, prodRwrIter, alpha, beta
     L1 = A1 / A1.sum(1, keepdim=True).to(torch.float64)
     L2 = A2 / A2.sum(1, keepdim=True).to(torch.float64)
 
-    if os.path.exists(f"datasets/cost/cost_{dataset_name}.npz") and False:
-        cost = np.load(f"datasets/cost/cost_{dataset_name}.npz")
-        crossC = torch.from_numpy(cost['crossC']).to(torch.float64)
-        intraC1 = torch.from_numpy(cost['intraC1']).to(torch.float64)
-        intraC2 = torch.from_numpy(cost['intraC2']).to(torch.float64)
-    else:
-        crossC, intraC1, intraC2 = get_cost(dataset_name, A1, A2, X1, X2, H, sepRwrIter, prodRwrIter, alpha, beta, gamma, no_joint_rwr)
+    crossC, intraC1, intraC2 = get_cost(dataset_name, A1, A2, X1, X2, H, sepRwrIter, prodRwrIter, alpha, beta, gamma, no_joint_rwr, time_recorder)
 
     if use_pgna:
         pgna_emb = np.load(f"outputs/pgna_constrained/pgna_{dataset_name}_embeddings.npz")
@@ -81,7 +76,10 @@ def parrot(dataset_name, A1, A2, X1, X2, H, sepRwrIter, prodRwrIter, alpha, beta
 
     # T, W, res = cpot_new(L1, L2, u, v, crossC, intraC1, intraC2, inIter, outIter, H, l1, l2, l3, l4,
     #                      self_train=self_train, gnd=gnd)
+    start_time = time.time()
     T, W, res = cpot(L1, L2, crossC, intraC1, intraC2, inIter, outIter, H, l1, l2, l3, l4)
+    end_time = time.time()
+    time_recorder['cpot'].append(end_time - start_time)
     # T, W, res = cpot_org(L1, L2, crossC, intraC1, intraC2, inIter, outIter, H, l1, l2, l3, l4)
 
     return T, W, res

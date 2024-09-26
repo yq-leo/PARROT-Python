@@ -6,7 +6,7 @@ import os
 from tqdm import tqdm
 
 
-def get_cost(dataset, A1, A2, X1, X2, H, rwrIter, rwIter, alpha, beta, gamma, no_joint_rwr=False):
+def get_cost(dataset, A1, A2, X1, X2, H, rwrIter, rwIter, alpha, beta, gamma, no_joint_rwr=False, time_recorder=None):
     """
     Calculate cross/intra-graph cost based on attribute/rw
     :param dataset: dataset name
@@ -21,6 +21,7 @@ def get_cost(dataset, A1, A2, X1, X2, H, rwrIter, rwIter, alpha, beta, gamma, no
     :param beta: rwr restart ratio
     :param gamma: discounted factor of Bellman equation
     :param no_joint_rwr: whether to use joint rwr
+    :param time_recorder: time recorder
     :return:
         crossC: cross-graph cost matrix, shape=(n1, n2)
         intraC1: intra-graph cost matrix for graph 1, shape=(n1, n1)
@@ -32,7 +33,10 @@ def get_cost(dataset, A1, A2, X1, X2, H, rwrIter, rwIter, alpha, beta, gamma, no
     # calculate RWR
     T1 = cal_trans(A1, None)
     T2 = cal_trans(A2, None)
+    start_rwr_time = time.time()
     rwr1, rwr2 = get_sep_rwr(T1, T2, H, beta, rwrIter)
+    end_rwr_time = time.time()
+    time_recorder['sep_rwr'].append(end_rwr_time - start_rwr_time)
 
     rwrCost = get_cross_cost(rwr1, rwr2, H)
 
@@ -59,6 +63,8 @@ def get_cost(dataset, A1, A2, X1, X2, H, rwrIter, rwIter, alpha, beta, gamma, no
     if not os.path.exists(f"datasets/cost"):
         os.makedirs(f"datasets/cost")
     np.savez(f"datasets/cost/cost_{dataset}.npz", crossC=crossC.numpy(), intraC1=intraC1.numpy(), intraC2=intraC2.numpy())
+
+    time_recorder['rwr'].append(end_time - start_time)
 
     return crossC, intraC1, intraC2
 

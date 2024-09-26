@@ -51,32 +51,7 @@ def load_data(file_path, G1_name, G2_name, use_attr, shuffle='off'):
     gnd = torch.from_numpy(gnd).long()
     H = torch.from_numpy(H).int()
 
-    n1 = adj_mat1.shape[0]
-    n2 = adj_mat2.shape[0]
-    num_train = H.sum()
-
-    edge_index1 = np.array(np.where(adj_mat1 == 1)).T
-    num_nodes1 = adj_mat1.shape[0]
-    G1 = nx.Graph()
-    G1.add_nodes_from(np.arange(num_nodes1))
-    G1.add_edges_from(edge_index1)
-    for edge in G1.edges():
-        G1[edge[0]][edge[1]]['weight'] = 1
-
-    partitions = nx.community.louvain_communities(G1)
-    partitions = sorted(partitions, key=lambda x: len(x))
-
-    partition_map = {node: idx for idx, com in enumerate(partitions) for node in com}
-    stat = defaultdict(int)
-    train = torch.where(H.T == 1)[0]
-    for node in train:
-        stat[partition_map[int(node)]] += 1
-    print(f"Distribution of given anchor nodes: {[(i, stat[i]) for i in range(len(partitions))]}")
-
-    if shuffle != 'off':
-        H = community_shuffle(n1, n2, G1, partitions, gnd, int(num_train), shuffle)
-
-    return adj_mat1, adj_mat2, x1, x2, gnd, H
+    return adj_mat1, adj_mat2, x1, x2, gnd, H.T
 
 
 def community_shuffle(n1, n2, G, partitions, gnd, num_train, shuffle):
