@@ -29,20 +29,20 @@ def load_data(file_path, G1_name, G2_name, use_attr, shuffle='off'):
     if use_attr:
         x1, x2 = data[f'{G1_name}_node_feat'].astype(np.float64), data[f'{G2_name}_node_feat'].astype(np.float64)
         if type(x1) is not np.ndarray:
-            x1 = x1.A
+            x1 = x1.toarray()
         if type(x2) is not np.ndarray:
-            x2 = x2.A
+            x2 = x2.toarray()
     else:
         x1, x2 = None, None
     gnd = data['gnd'].astype(np.int64) - 1
     H = data['H'].astype(int)
 
     if type(adj_mat1) is not np.ndarray:
-        adj_mat1 = adj_mat1.A
+        adj_mat1 = adj_mat1.toarray()
     if type(adj_mat2) is not np.ndarray:
-        adj_mat2 = adj_mat2.A
+        adj_mat2 = adj_mat2.toarray()
     if type(H) is not np.ndarray:
-        H = H.A
+        H = H.toarray()
 
     adj_mat1 = torch.from_numpy(adj_mat1).int()
     adj_mat2 = torch.from_numpy(adj_mat2).int()
