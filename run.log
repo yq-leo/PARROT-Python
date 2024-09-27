@@ -3,18 +3,8 @@ Loading datasets/scale_anchor/G500.mat...
 Graph 1: torch.Size([500, 500]), None
 Graph 2: torch.Size([500, 500]), None
 Ground truth: torch.Size([400, 2]), torch.Size([500, 500])
-Time for cost matrix: 0.19s
-Iter 0: wasserstein=0.803216, edge=0.012693, neigh=0.050314, align=-0.004972, entropy=12.429216,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.532794, edge=0.001578, neigh=2.673890, align=3.226269, entropy=6.841147,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.518349, edge=0.000082, neigh=2.938248, align=3.692827, entropy=6.256747,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.517626, edge=0.000004, neigh=2.957964, align=3.726398, entropy=6.217284,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.517590, edge=0.000000, neigh=2.959271, align=3.728581, entropy=6.214806,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.517588, edge=0.000000, neigh=2.959354, align=3.728718, entropy=6.214655,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.517588, edge=0.000000, neigh=2.959359, align=3.728726, entropy=6.214646,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.517588, edge=0.000000, neigh=2.959360, align=3.728727, entropy=6.214645,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.517588, edge=0.000000, neigh=2.959360, align=3.728727, entropy=6.214645,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.517588, edge=0.000000, neigh=2.959360, align=3.728727, entropy=6.214645,s=1.000000, s_hat=1.000000
-Time for optimization: 0.24s
+Time for cost matrix: 0.21s
+Time for optimization: 0.22s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -28,17 +18,7 @@ Graph 1: torch.Size([500, 500]), None
 Graph 2: torch.Size([500, 500]), None
 Ground truth: torch.Size([400, 2]), torch.Size([500, 500])
 Time for cost matrix: 0.19s
-Iter 0: wasserstein=0.803216, edge=0.012693, neigh=0.050314, align=-0.004972, entropy=12.429216,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.532794, edge=0.001578, neigh=2.673890, align=3.226269, entropy=6.841147,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.518349, edge=0.000082, neigh=2.938248, align=3.692827, entropy=6.256747,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.517626, edge=0.000004, neigh=2.957964, align=3.726398, entropy=6.217284,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.517590, edge=0.000000, neigh=2.959271, align=3.728581, entropy=6.214806,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.517588, edge=0.000000, neigh=2.959354, align=3.728718, entropy=6.214655,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.517588, edge=0.000000, neigh=2.959359, align=3.728726, entropy=6.214646,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.517588, edge=0.000000, neigh=2.959360, align=3.728727, entropy=6.214645,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.517588, edge=0.000000, neigh=2.959360, align=3.728727, entropy=6.214645,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.517588, edge=0.000000, neigh=2.959360, align=3.728727, entropy=6.214645,s=1.000000, s_hat=1.000000
-Time for optimization: 0.23s
+Time for optimization: 0.21s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -51,18 +31,8 @@ Loading datasets/scale_anchor/G500.mat...
 Graph 1: torch.Size([500, 500]), None
 Graph 2: torch.Size([500, 500]), None
 Ground truth: torch.Size([400, 2]), torch.Size([500, 500])
-Time for cost matrix: 0.13s
-Iter 0: wasserstein=0.803216, edge=0.012693, neigh=0.050314, align=-0.004972, entropy=12.429216,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.532794, edge=0.001578, neigh=2.673890, align=3.226269, entropy=6.841147,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.518349, edge=0.000082, neigh=2.938248, align=3.692827, entropy=6.256747,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.517626, edge=0.000004, neigh=2.957964, align=3.726398, entropy=6.217284,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.517590, edge=0.000000, neigh=2.959271, align=3.728581, entropy=6.214806,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.517588, edge=0.000000, neigh=2.959354, align=3.728718, entropy=6.214655,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.517588, edge=0.000000, neigh=2.959359, align=3.728726, entropy=6.214646,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.517588, edge=0.000000, neigh=2.959360, align=3.728727, entropy=6.214645,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.517588, edge=0.000000, neigh=2.959360, align=3.728727, entropy=6.214645,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.517588, edge=0.000000, neigh=2.959360, align=3.728727, entropy=6.214645,s=1.000000, s_hat=1.000000
-Time for optimization: 0.20s
+Time for cost matrix: 0.20s
+Time for optimization: 0.21s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -75,18 +45,8 @@ Loading datasets/scale_anchor/G1000.mat...
 Graph 1: torch.Size([1000, 1000]), None
 Graph 2: torch.Size([1000, 1000]), None
 Ground truth: torch.Size([800, 2]), torch.Size([1000, 1000])
-Time for cost matrix: 0.33s
-Iter 0: wasserstein=0.909913, edge=0.007744, neigh=0.055643, align=-0.002763, entropy=13.815511,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.583343, edge=0.000849, neigh=2.740053, align=3.684109, entropy=7.506316,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.566435, edge=0.000044, neigh=2.944050, align=4.112532, entropy=6.946777,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.565589, edge=0.000002, neigh=2.957612, align=4.142599, entropy=6.910154,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.565547, edge=0.000000, neigh=2.958454, align=4.144528, entropy=6.907898,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.565545, edge=0.000000, neigh=2.958505, align=4.144646, entropy=6.907764,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.565545, edge=0.000000, neigh=2.958508, align=4.144653, entropy=6.907756,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.565545, edge=0.000000, neigh=2.958508, align=4.144653, entropy=6.907755,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.565545, edge=0.000000, neigh=2.958508, align=4.144653, entropy=6.907755,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.565545, edge=0.000000, neigh=2.958508, align=4.144653, entropy=6.907755,s=1.000000, s_hat=1.000000
-Time for optimization: 0.62s
+Time for cost matrix: 0.35s
+Time for optimization: 0.47s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -99,18 +59,8 @@ Loading datasets/scale_anchor/G1000.mat...
 Graph 1: torch.Size([1000, 1000]), None
 Graph 2: torch.Size([1000, 1000]), None
 Ground truth: torch.Size([800, 2]), torch.Size([1000, 1000])
-Time for cost matrix: 0.33s
-Iter 0: wasserstein=0.909913, edge=0.007744, neigh=0.055643, align=-0.002763, entropy=13.815511,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.583343, edge=0.000849, neigh=2.740053, align=3.684109, entropy=7.506316,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.566435, edge=0.000044, neigh=2.944050, align=4.112532, entropy=6.946777,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.565589, edge=0.000002, neigh=2.957612, align=4.142599, entropy=6.910154,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.565547, edge=0.000000, neigh=2.958454, align=4.144528, entropy=6.907898,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.565545, edge=0.000000, neigh=2.958505, align=4.144646, entropy=6.907764,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.565545, edge=0.000000, neigh=2.958508, align=4.144653, entropy=6.907756,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.565545, edge=0.000000, neigh=2.958508, align=4.144653, entropy=6.907755,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.565545, edge=0.000000, neigh=2.958508, align=4.144653, entropy=6.907755,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.565545, edge=0.000000, neigh=2.958508, align=4.144653, entropy=6.907755,s=1.000000, s_hat=1.000000
-Time for optimization: 0.73s
+Time for cost matrix: 0.34s
+Time for optimization: 0.47s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -123,18 +73,8 @@ Loading datasets/scale_anchor/G1000.mat...
 Graph 1: torch.Size([1000, 1000]), None
 Graph 2: torch.Size([1000, 1000]), None
 Ground truth: torch.Size([800, 2]), torch.Size([1000, 1000])
-Time for cost matrix: 0.28s
-Iter 0: wasserstein=0.909913, edge=0.007744, neigh=0.055643, align=-0.002763, entropy=13.815511,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.583343, edge=0.000849, neigh=2.740053, align=3.684109, entropy=7.506316,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.566435, edge=0.000044, neigh=2.944050, align=4.112532, entropy=6.946777,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.565589, edge=0.000002, neigh=2.957612, align=4.142599, entropy=6.910154,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.565547, edge=0.000000, neigh=2.958454, align=4.144528, entropy=6.907898,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.565545, edge=0.000000, neigh=2.958505, align=4.144646, entropy=6.907764,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.565545, edge=0.000000, neigh=2.958508, align=4.144653, entropy=6.907756,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.565545, edge=0.000000, neigh=2.958508, align=4.144653, entropy=6.907755,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.565545, edge=0.000000, neigh=2.958508, align=4.144653, entropy=6.907755,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.565545, edge=0.000000, neigh=2.958508, align=4.144653, entropy=6.907755,s=1.000000, s_hat=1.000000
-Time for optimization: 0.70s
+Time for cost matrix: 0.34s
+Time for optimization: 0.53s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -147,18 +87,8 @@ Loading datasets/scale_anchor/G2000.mat...
 Graph 1: torch.Size([2000, 2000]), None
 Graph 2: torch.Size([2000, 2000]), None
 Ground truth: torch.Size([1600, 2]), torch.Size([2000, 2000])
-Time for cost matrix: 1.00s
-Iter 0: wasserstein=1.015153, edge=0.004753, neigh=0.055002, align=-0.001520, entropy=15.201805,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.634385, edge=0.000496, neigh=2.780545, align=4.105276, entropy=8.209141,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.614841, edge=0.000025, neigh=2.959799, align=4.529460, entropy=7.639633,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.613864, edge=0.000001, neigh=2.970523, align=4.558576, entropy=7.603251,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.613815, edge=0.000000, neigh=2.971145, align=4.560423, entropy=7.601040,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.613813, edge=0.000000, neigh=2.971181, align=4.560534, entropy=7.600910,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.613813, edge=0.000000, neigh=2.971183, align=4.560541, entropy=7.600903,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.613812, edge=0.000000, neigh=2.971183, align=4.560541, entropy=7.600902,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.613812, edge=0.000000, neigh=2.971183, align=4.560541, entropy=7.600902,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.613812, edge=0.000000, neigh=2.971183, align=4.560541, entropy=7.600902,s=1.000000, s_hat=1.000000
-Time for optimization: 2.99s
+Time for cost matrix: 0.87s
+Time for optimization: 2.13s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -171,18 +101,8 @@ Loading datasets/scale_anchor/G2000.mat...
 Graph 1: torch.Size([2000, 2000]), None
 Graph 2: torch.Size([2000, 2000]), None
 Ground truth: torch.Size([1600, 2]), torch.Size([2000, 2000])
-Time for cost matrix: 0.98s
-Iter 0: wasserstein=1.015153, edge=0.004753, neigh=0.055002, align=-0.001520, entropy=15.201805,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.634385, edge=0.000496, neigh=2.780545, align=4.105276, entropy=8.209141,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.614841, edge=0.000025, neigh=2.959799, align=4.529460, entropy=7.639633,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.613864, edge=0.000001, neigh=2.970523, align=4.558576, entropy=7.603251,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.613815, edge=0.000000, neigh=2.971145, align=4.560423, entropy=7.601040,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.613813, edge=0.000000, neigh=2.971181, align=4.560534, entropy=7.600910,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.613813, edge=0.000000, neigh=2.971183, align=4.560541, entropy=7.600903,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.613812, edge=0.000000, neigh=2.971183, align=4.560541, entropy=7.600902,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.613812, edge=0.000000, neigh=2.971183, align=4.560541, entropy=7.600902,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.613812, edge=0.000000, neigh=2.971183, align=4.560541, entropy=7.600902,s=1.000000, s_hat=1.000000
-Time for optimization: 2.89s
+Time for cost matrix: 0.94s
+Time for optimization: 1.81s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -195,18 +115,8 @@ Loading datasets/scale_anchor/G2000.mat...
 Graph 1: torch.Size([2000, 2000]), None
 Graph 2: torch.Size([2000, 2000]), None
 Ground truth: torch.Size([1600, 2]), torch.Size([2000, 2000])
-Time for cost matrix: 0.97s
-Iter 0: wasserstein=1.015153, edge=0.004753, neigh=0.055002, align=-0.001520, entropy=15.201805,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.634385, edge=0.000496, neigh=2.780545, align=4.105276, entropy=8.209141,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.614841, edge=0.000025, neigh=2.959799, align=4.529460, entropy=7.639633,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.613864, edge=0.000001, neigh=2.970523, align=4.558576, entropy=7.603251,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.613815, edge=0.000000, neigh=2.971145, align=4.560423, entropy=7.601040,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.613813, edge=0.000000, neigh=2.971181, align=4.560534, entropy=7.600910,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.613813, edge=0.000000, neigh=2.971183, align=4.560541, entropy=7.600903,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.613812, edge=0.000000, neigh=2.971183, align=4.560541, entropy=7.600902,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.613812, edge=0.000000, neigh=2.971183, align=4.560541, entropy=7.600902,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.613812, edge=0.000000, neigh=2.971183, align=4.560541, entropy=7.600902,s=1.000000, s_hat=1.000000
-Time for optimization: 2.78s
+Time for cost matrix: 0.94s
+Time for optimization: 1.91s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -219,18 +129,8 @@ Loading datasets/scale_anchor/G3000.mat...
 Graph 1: torch.Size([3000, 3000]), None
 Graph 2: torch.Size([3000, 3000]), None
 Ground truth: torch.Size([2400, 2]), torch.Size([3000, 3000])
-Time for cost matrix: 3.28s
-Iter 0: wasserstein=1.073930, edge=0.003555, neigh=0.057271, align=-0.001068, entropy=16.012735,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.663569, edge=0.000368, neigh=2.807194, align=4.351013, entropy=8.630602,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.641953, edge=0.000019, neigh=2.968922, align=4.772916, entropy=8.045844,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.640872, edge=0.000001, neigh=2.978214, align=4.801866, entropy=8.008750,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.640818, edge=0.000000, neigh=2.978738, align=4.803702, entropy=8.006507,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.640816, edge=0.000000, neigh=2.978767, align=4.803814, entropy=8.006376,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.640816, edge=0.000000, neigh=2.978768, align=4.803820, entropy=8.006368,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.640816, edge=0.000000, neigh=2.978768, align=4.803820, entropy=8.006368,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.640816, edge=0.000000, neigh=2.978768, align=4.803821, entropy=8.006368,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.640816, edge=0.000000, neigh=2.978768, align=4.803821, entropy=8.006368,s=1.000000, s_hat=1.000000
-Time for optimization: 12.85s
+Time for cost matrix: 3.07s
+Time for optimization: 10.05s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -243,18 +143,8 @@ Loading datasets/scale_anchor/G3000.mat...
 Graph 1: torch.Size([3000, 3000]), None
 Graph 2: torch.Size([3000, 3000]), None
 Ground truth: torch.Size([2400, 2]), torch.Size([3000, 3000])
-Time for cost matrix: 3.09s
-Iter 0: wasserstein=1.073930, edge=0.003555, neigh=0.057271, align=-0.001068, entropy=16.012735,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.663569, edge=0.000368, neigh=2.807194, align=4.351013, entropy=8.630602,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.641953, edge=0.000019, neigh=2.968922, align=4.772916, entropy=8.045844,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.640872, edge=0.000001, neigh=2.978214, align=4.801866, entropy=8.008750,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.640818, edge=0.000000, neigh=2.978738, align=4.803702, entropy=8.006507,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.640816, edge=0.000000, neigh=2.978767, align=4.803814, entropy=8.006376,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.640816, edge=0.000000, neigh=2.978768, align=4.803820, entropy=8.006368,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.640816, edge=0.000000, neigh=2.978768, align=4.803820, entropy=8.006368,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.640816, edge=0.000000, neigh=2.978768, align=4.803821, entropy=8.006368,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.640816, edge=0.000000, neigh=2.978768, align=4.803821, entropy=8.006368,s=1.000000, s_hat=1.000000
-Time for optimization: 12.21s
+Time for cost matrix: 3.33s
+Time for optimization: 9.31s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -267,18 +157,8 @@ Loading datasets/scale_anchor/G3000.mat...
 Graph 1: torch.Size([3000, 3000]), None
 Graph 2: torch.Size([3000, 3000]), None
 Ground truth: torch.Size([2400, 2]), torch.Size([3000, 3000])
-Time for cost matrix: 3.05s
-Iter 0: wasserstein=1.073930, edge=0.003555, neigh=0.057271, align=-0.001068, entropy=16.012735,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.663569, edge=0.000368, neigh=2.807194, align=4.351013, entropy=8.630602,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.641953, edge=0.000019, neigh=2.968922, align=4.772916, entropy=8.045844,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.640872, edge=0.000001, neigh=2.978214, align=4.801866, entropy=8.008750,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.640818, edge=0.000000, neigh=2.978738, align=4.803702, entropy=8.006507,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.640816, edge=0.000000, neigh=2.978767, align=4.803814, entropy=8.006376,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.640816, edge=0.000000, neigh=2.978768, align=4.803820, entropy=8.006368,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.640816, edge=0.000000, neigh=2.978768, align=4.803820, entropy=8.006368,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.640816, edge=0.000000, neigh=2.978768, align=4.803821, entropy=8.006368,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.640816, edge=0.000000, neigh=2.978768, align=4.803821, entropy=8.006368,s=1.000000, s_hat=1.000000
-Time for optimization: 12.30s
+Time for cost matrix: 3.26s
+Time for optimization: 10.14s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -291,18 +171,8 @@ Loading datasets/scale_anchor/G4000.mat...
 Graph 1: torch.Size([4000, 4000]), None
 Graph 2: torch.Size([4000, 4000]), None
 Ground truth: torch.Size([3200, 2]), torch.Size([4000, 4000])
-Time for cost matrix: 5.18s
-Iter 0: wasserstein=1.111425, edge=0.002820, neigh=0.055840, align=-0.000829, entropy=16.588099,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.681869, edge=0.000285, neigh=2.805625, align=4.527212, entropy=8.921874,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.659438, edge=0.000015, neigh=2.960819, align=4.945963, entropy=8.333447,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.658317, edge=0.000001, neigh=2.969464, align=4.974510, entropy=8.296416,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.658261, edge=0.000000, neigh=2.969939, align=4.976314, entropy=8.294188,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.658258, edge=0.000000, neigh=2.969965, align=4.976423, entropy=8.294058,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.658258, edge=0.000000, neigh=2.969967, align=4.976429, entropy=8.294050,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.658258, edge=0.000000, neigh=2.969967, align=4.976430, entropy=8.294050,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.658258, edge=0.000000, neigh=2.969967, align=4.976430, entropy=8.294050,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.658258, edge=0.000000, neigh=2.969967, align=4.976430, entropy=8.294050,s=1.000000, s_hat=1.000000
-Time for optimization: 22.88s
+Time for cost matrix: 5.23s
+Time for optimization: 17.53s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -315,18 +185,8 @@ Loading datasets/scale_anchor/G4000.mat...
 Graph 1: torch.Size([4000, 4000]), None
 Graph 2: torch.Size([4000, 4000]), None
 Ground truth: torch.Size([3200, 2]), torch.Size([4000, 4000])
-Time for cost matrix: 5.42s
-Iter 0: wasserstein=1.111425, edge=0.002820, neigh=0.055840, align=-0.000829, entropy=16.588099,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.681869, edge=0.000285, neigh=2.805625, align=4.527212, entropy=8.921874,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.659438, edge=0.000015, neigh=2.960819, align=4.945963, entropy=8.333447,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.658317, edge=0.000001, neigh=2.969464, align=4.974510, entropy=8.296416,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.658261, edge=0.000000, neigh=2.969939, align=4.976314, entropy=8.294188,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.658258, edge=0.000000, neigh=2.969965, align=4.976423, entropy=8.294058,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.658258, edge=0.000000, neigh=2.969967, align=4.976429, entropy=8.294050,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.658258, edge=0.000000, neigh=2.969967, align=4.976430, entropy=8.294050,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.658258, edge=0.000000, neigh=2.969967, align=4.976430, entropy=8.294050,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.658258, edge=0.000000, neigh=2.969967, align=4.976430, entropy=8.294050,s=1.000000, s_hat=1.000000
-Time for optimization: 23.20s
+Time for cost matrix: 5.40s
+Time for optimization: 17.03s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -339,18 +199,8 @@ Loading datasets/scale_anchor/G4000.mat...
 Graph 1: torch.Size([4000, 4000]), None
 Graph 2: torch.Size([4000, 4000]), None
 Ground truth: torch.Size([3200, 2]), torch.Size([4000, 4000])
-Time for cost matrix: 5.41s
-Iter 0: wasserstein=1.111425, edge=0.002820, neigh=0.055840, align=-0.000829, entropy=16.588099,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.681869, edge=0.000285, neigh=2.805625, align=4.527212, entropy=8.921874,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.659438, edge=0.000015, neigh=2.960819, align=4.945963, entropy=8.333447,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.658317, edge=0.000001, neigh=2.969464, align=4.974510, entropy=8.296416,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.658261, edge=0.000000, neigh=2.969939, align=4.976314, entropy=8.294188,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.658258, edge=0.000000, neigh=2.969965, align=4.976423, entropy=8.294058,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.658258, edge=0.000000, neigh=2.969967, align=4.976429, entropy=8.294050,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.658258, edge=0.000000, neigh=2.969967, align=4.976430, entropy=8.294050,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.658258, edge=0.000000, neigh=2.969967, align=4.976430, entropy=8.294050,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.658258, edge=0.000000, neigh=2.969967, align=4.976430, entropy=8.294050,s=1.000000, s_hat=1.000000
-Time for optimization: 23.56s
+Time for cost matrix: 5.49s
+Time for optimization: 17.05s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -359,46 +209,26 @@ Top-50: 1.000
 Top-100: 1.000
 MRR: 1.000
 Run 1/3
-Loading datasets/scale_anchor/G5000.mat...
-Graph 1: torch.Size([5000, 5000]), None
-Graph 2: torch.Size([5000, 5000]), None
-Ground truth: torch.Size([4000, 2]), torch.Size([5000, 5000])
-Time for cost matrix: 10.98s
-Iter 0: wasserstein=1.134696, edge=0.002349, neigh=0.054126, align=-0.000681, entropy=17.034386,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.694234, edge=0.000239, neigh=2.814214, align=4.669165, entropy=9.158501,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.670356, edge=0.000012, neigh=2.960961, align=5.080158, entropy=8.557359,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.669162, edge=0.000001, neigh=2.969029, align=5.108407, entropy=8.519603,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.669103, edge=0.000000, neigh=2.969468, align=5.110200, entropy=8.517334,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.669100, edge=0.000000, neigh=2.969491, align=5.110309, entropy=8.517201,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.669100, edge=0.000000, neigh=2.969493, align=5.110316, entropy=8.517194,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.669100, edge=0.000000, neigh=2.969493, align=5.110316, entropy=8.517193,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.669100, edge=0.000000, neigh=2.969493, align=5.110316, entropy=8.517193,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.669100, edge=0.000000, neigh=2.969493, align=5.110316, entropy=8.517193,s=1.000000, s_hat=1.000000
-Time for optimization: 40.87s
-Test results:
-Top-1: 1.000
-Top-10: 1.000
-Top-30: 1.000
-Top-50: 1.000
-Top-100: 1.000
-MRR: 1.000
-Run 2/3
 Loading datasets/scale_anchor/G5000.mat...
 Graph 1: torch.Size([5000, 5000]), None
 Graph 2: torch.Size([5000, 5000]), None
 Ground truth: torch.Size([4000, 2]), torch.Size([5000, 5000])
 Time for cost matrix: 10.70s
-Iter 0: wasserstein=1.134696, edge=0.002349, neigh=0.054126, align=-0.000681, entropy=17.034386,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.694234, edge=0.000239, neigh=2.814214, align=4.669165, entropy=9.158501,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.670356, edge=0.000012, neigh=2.960961, align=5.080158, entropy=8.557359,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.669162, edge=0.000001, neigh=2.969029, align=5.108407, entropy=8.519603,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.669103, edge=0.000000, neigh=2.969468, align=5.110200, entropy=8.517334,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.669100, edge=0.000000, neigh=2.969491, align=5.110309, entropy=8.517201,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.669100, edge=0.000000, neigh=2.969493, align=5.110316, entropy=8.517194,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.669100, edge=0.000000, neigh=2.969493, align=5.110316, entropy=8.517193,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.669100, edge=0.000000, neigh=2.969493, align=5.110316, entropy=8.517193,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.669100, edge=0.000000, neigh=2.969493, align=5.110316, entropy=8.517193,s=1.000000, s_hat=1.000000
-Time for optimization: 39.76s
+Time for optimization: 29.03s
+Test results:
+Top-1: 1.000
+Top-10: 1.000
+Top-30: 1.000
+Top-50: 1.000
+Top-100: 1.000
+MRR: 1.000
+Run 2/3
+Loading datasets/scale_anchor/G5000.mat...
+Graph 1: torch.Size([5000, 5000]), None
+Graph 2: torch.Size([5000, 5000]), None
+Ground truth: torch.Size([4000, 2]), torch.Size([5000, 5000])
+Time for cost matrix: 10.47s
+Time for optimization: 28.61s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -411,18 +241,8 @@ Loading datasets/scale_anchor/G5000.mat...
 Graph 1: torch.Size([5000, 5000]), None
 Graph 2: torch.Size([5000, 5000]), None
 Ground truth: torch.Size([4000, 2]), torch.Size([5000, 5000])
-Time for cost matrix: 10.61s
-Iter 0: wasserstein=1.134696, edge=0.002349, neigh=0.054126, align=-0.000681, entropy=17.034386,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.694234, edge=0.000239, neigh=2.814214, align=4.669165, entropy=9.158501,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.670356, edge=0.000012, neigh=2.960961, align=5.080158, entropy=8.557359,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.669162, edge=0.000001, neigh=2.969029, align=5.108407, entropy=8.519603,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.669103, edge=0.000000, neigh=2.969468, align=5.110200, entropy=8.517334,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.669100, edge=0.000000, neigh=2.969491, align=5.110309, entropy=8.517201,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.669100, edge=0.000000, neigh=2.969493, align=5.110316, entropy=8.517194,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.669100, edge=0.000000, neigh=2.969493, align=5.110316, entropy=8.517193,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.669100, edge=0.000000, neigh=2.969493, align=5.110316, entropy=8.517193,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.669100, edge=0.000000, neigh=2.969493, align=5.110316, entropy=8.517193,s=1.000000, s_hat=1.000000
-Time for optimization: 39.76s
+Time for cost matrix: 10.43s
+Time for optimization: 28.18s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -435,18 +255,8 @@ Loading datasets/scale_anchor/G6000.mat...
 Graph 1: torch.Size([6000, 6000]), None
 Graph 2: torch.Size([6000, 6000]), None
 Ground truth: torch.Size([4800, 2]), torch.Size([6000, 6000])
-Time for cost matrix: 14.36s
-Iter 0: wasserstein=1.151427, edge=0.002039, neigh=0.054245, align=-0.000580, entropy=17.399029,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.701367, edge=0.000202, neigh=2.818205, align=4.762162, entropy=9.339648,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.678320, edge=0.000010, neigh=2.970104, align=5.189054, entropy=8.739299,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.677168, edge=0.000001, neigh=2.978281, align=5.217790, entropy=8.701890,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.677110, edge=0.000000, neigh=2.978719, align=5.219594, entropy=8.699653,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.677107, edge=0.000000, neigh=2.978742, align=5.219702, entropy=8.699523,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.677107, edge=0.000000, neigh=2.978743, align=5.219708, entropy=8.699515,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.677107, edge=0.000000, neigh=2.978743, align=5.219709, entropy=8.699515,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.677107, edge=0.000000, neigh=2.978743, align=5.219709, entropy=8.699515,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.677107, edge=0.000000, neigh=2.978743, align=5.219709, entropy=8.699515,s=1.000000, s_hat=1.000000
-Time for optimization: 55.35s
+Time for cost matrix: 14.42s
+Time for optimization: 41.33s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -459,18 +269,8 @@ Loading datasets/scale_anchor/G6000.mat...
 Graph 1: torch.Size([6000, 6000]), None
 Graph 2: torch.Size([6000, 6000]), None
 Ground truth: torch.Size([4800, 2]), torch.Size([6000, 6000])
-Time for cost matrix: 14.48s
-Iter 0: wasserstein=1.151427, edge=0.002039, neigh=0.054245, align=-0.000580, entropy=17.399029,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.701367, edge=0.000202, neigh=2.818205, align=4.762162, entropy=9.339648,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.678320, edge=0.000010, neigh=2.970104, align=5.189054, entropy=8.739299,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.677168, edge=0.000001, neigh=2.978281, align=5.217790, entropy=8.701890,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.677110, edge=0.000000, neigh=2.978719, align=5.219594, entropy=8.699653,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.677107, edge=0.000000, neigh=2.978742, align=5.219702, entropy=8.699523,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.677107, edge=0.000000, neigh=2.978743, align=5.219708, entropy=8.699515,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.677107, edge=0.000000, neigh=2.978743, align=5.219709, entropy=8.699515,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.677107, edge=0.000000, neigh=2.978743, align=5.219709, entropy=8.699515,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.677107, edge=0.000000, neigh=2.978743, align=5.219709, entropy=8.699515,s=1.000000, s_hat=1.000000
-Time for optimization: 54.66s
+Time for cost matrix: 15.15s
+Time for optimization: 42.53s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -483,18 +283,8 @@ Loading datasets/scale_anchor/G6000.mat...
 Graph 1: torch.Size([6000, 6000]), None
 Graph 2: torch.Size([6000, 6000]), None
 Ground truth: torch.Size([4800, 2]), torch.Size([6000, 6000])
-Time for cost matrix: 14.91s
-Iter 0: wasserstein=1.151427, edge=0.002039, neigh=0.054245, align=-0.000580, entropy=17.399029,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.701367, edge=0.000202, neigh=2.818205, align=4.762162, entropy=9.339648,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.678320, edge=0.000010, neigh=2.970104, align=5.189054, entropy=8.739299,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.677168, edge=0.000001, neigh=2.978281, align=5.217790, entropy=8.701890,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.677110, edge=0.000000, neigh=2.978719, align=5.219594, entropy=8.699653,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.677107, edge=0.000000, neigh=2.978742, align=5.219702, entropy=8.699523,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.677107, edge=0.000000, neigh=2.978743, align=5.219708, entropy=8.699515,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.677107, edge=0.000000, neigh=2.978743, align=5.219709, entropy=8.699515,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.677107, edge=0.000000, neigh=2.978743, align=5.219709, entropy=8.699515,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.677107, edge=0.000000, neigh=2.978743, align=5.219709, entropy=8.699515,s=1.000000, s_hat=1.000000
-Time for optimization: 55.78s
+Time for cost matrix: 15.24s
+Time for optimization: 41.78s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -507,18 +297,8 @@ Loading datasets/scale_anchor/G7000.mat...
 Graph 1: torch.Size([7000, 7000]), None
 Graph 2: torch.Size([7000, 7000]), None
 Ground truth: torch.Size([5600, 2]), torch.Size([7000, 7000])
-Time for cost matrix: 19.72s
-Iter 0: wasserstein=1.165510, edge=0.001784, neigh=0.055410, align=-0.000506, entropy=17.707331,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.708857, edge=0.000179, neigh=2.820112, align=4.856663, entropy=9.504971,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.684868, edge=0.000009, neigh=2.966904, align=5.281523, entropy=8.894130,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.683669, edge=0.000000, neigh=2.974797, align=5.310274, entropy=8.856080,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.683609, edge=0.000000, neigh=2.975218, align=5.312083, entropy=8.853806,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.683606, edge=0.000000, neigh=2.975241, align=5.312192, entropy=8.853673,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.683606, edge=0.000000, neigh=2.975242, align=5.312199, entropy=8.853666,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.683606, edge=0.000000, neigh=2.975242, align=5.312199, entropy=8.853665,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.683606, edge=0.000000, neigh=2.975242, align=5.312199, entropy=8.853665,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.683606, edge=0.000000, neigh=2.975242, align=5.312199, entropy=8.853665,s=1.000000, s_hat=1.000000
-Time for optimization: 77.06s
+Time for cost matrix: 19.40s
+Time for optimization: 56.94s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -531,18 +311,8 @@ Loading datasets/scale_anchor/G7000.mat...
 Graph 1: torch.Size([7000, 7000]), None
 Graph 2: torch.Size([7000, 7000]), None
 Ground truth: torch.Size([5600, 2]), torch.Size([7000, 7000])
-Time for cost matrix: 19.19s
-Iter 0: wasserstein=1.165510, edge=0.001784, neigh=0.055410, align=-0.000506, entropy=17.707331,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.708857, edge=0.000179, neigh=2.820112, align=4.856663, entropy=9.504971,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.684868, edge=0.000009, neigh=2.966904, align=5.281523, entropy=8.894130,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.683669, edge=0.000000, neigh=2.974797, align=5.310274, entropy=8.856080,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.683609, edge=0.000000, neigh=2.975218, align=5.312083, entropy=8.853806,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.683606, edge=0.000000, neigh=2.975241, align=5.312192, entropy=8.853673,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.683606, edge=0.000000, neigh=2.975242, align=5.312199, entropy=8.853666,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.683606, edge=0.000000, neigh=2.975242, align=5.312199, entropy=8.853665,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.683606, edge=0.000000, neigh=2.975242, align=5.312199, entropy=8.853665,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.683606, edge=0.000000, neigh=2.975242, align=5.312199, entropy=8.853665,s=1.000000, s_hat=1.000000
-Time for optimization: 75.43s
+Time for cost matrix: 20.23s
+Time for optimization: 57.81s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -555,18 +325,8 @@ Loading datasets/scale_anchor/G7000.mat...
 Graph 1: torch.Size([7000, 7000]), None
 Graph 2: torch.Size([7000, 7000]), None
 Ground truth: torch.Size([5600, 2]), torch.Size([7000, 7000])
-Time for cost matrix: 19.16s
-Iter 0: wasserstein=1.165510, edge=0.001784, neigh=0.055410, align=-0.000506, entropy=17.707331,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.708857, edge=0.000179, neigh=2.820112, align=4.856663, entropy=9.504971,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.684868, edge=0.000009, neigh=2.966904, align=5.281523, entropy=8.894130,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.683669, edge=0.000000, neigh=2.974797, align=5.310274, entropy=8.856080,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.683609, edge=0.000000, neigh=2.975218, align=5.312083, entropy=8.853806,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.683606, edge=0.000000, neigh=2.975241, align=5.312192, entropy=8.853673,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.683606, edge=0.000000, neigh=2.975242, align=5.312199, entropy=8.853666,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.683606, edge=0.000000, neigh=2.975242, align=5.312199, entropy=8.853665,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.683606, edge=0.000000, neigh=2.975242, align=5.312199, entropy=8.853665,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.683606, edge=0.000000, neigh=2.975242, align=5.312199, entropy=8.853665,s=1.000000, s_hat=1.000000
-Time for optimization: 74.93s
+Time for cost matrix: 20.31s
+Time for optimization: 57.66s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -579,18 +339,8 @@ Loading datasets/scale_anchor/G8000.mat...
 Graph 1: torch.Size([8000, 8000]), None
 Graph 2: torch.Size([8000, 8000]), None
 Ground truth: torch.Size([6400, 2]), torch.Size([8000, 8000])
-Time for cost matrix: 24.62s
-Iter 0: wasserstein=1.171901, edge=0.001581, neigh=0.055826, align=-0.000449, entropy=17.974394,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.711751, edge=0.000158, neigh=2.820044, align=4.929208, entropy=9.643347,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.687927, edge=0.000008, neigh=2.966727, align=5.361329, entropy=9.027838,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.686736, edge=0.000000, neigh=2.974545, align=5.390380, entropy=8.989617,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.686676, edge=0.000000, neigh=2.974960, align=5.392202, entropy=8.987337,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.686673, edge=0.000000, neigh=2.974981, align=5.392311, entropy=8.987205,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.686673, edge=0.000000, neigh=2.974983, align=5.392318, entropy=8.987197,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.686673, edge=0.000000, neigh=2.974983, align=5.392318, entropy=8.987197,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.686673, edge=0.000000, neigh=2.974983, align=5.392318, entropy=8.987197,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.686673, edge=0.000000, neigh=2.974983, align=5.392318, entropy=8.987197,s=1.000000, s_hat=1.000000
-Time for optimization: 97.34s
+Time for cost matrix: 24.78s
+Time for optimization: 70.37s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -603,18 +353,8 @@ Loading datasets/scale_anchor/G8000.mat...
 Graph 1: torch.Size([8000, 8000]), None
 Graph 2: torch.Size([8000, 8000]), None
 Ground truth: torch.Size([6400, 2]), torch.Size([8000, 8000])
-Time for cost matrix: 25.93s
-Iter 0: wasserstein=1.171901, edge=0.001581, neigh=0.055826, align=-0.000449, entropy=17.974394,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.711751, edge=0.000158, neigh=2.820044, align=4.929208, entropy=9.643347,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.687927, edge=0.000008, neigh=2.966727, align=5.361329, entropy=9.027838,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.686736, edge=0.000000, neigh=2.974545, align=5.390380, entropy=8.989617,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.686676, edge=0.000000, neigh=2.974960, align=5.392202, entropy=8.987337,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.686673, edge=0.000000, neigh=2.974981, align=5.392311, entropy=8.987205,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.686673, edge=0.000000, neigh=2.974983, align=5.392318, entropy=8.987197,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.686673, edge=0.000000, neigh=2.974983, align=5.392318, entropy=8.987197,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.686673, edge=0.000000, neigh=2.974983, align=5.392318, entropy=8.987197,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.686673, edge=0.000000, neigh=2.974983, align=5.392318, entropy=8.987197,s=1.000000, s_hat=1.000000
-Time for optimization: 99.59s
+Time for cost matrix: 25.74s
+Time for optimization: 72.41s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -627,18 +367,8 @@ Loading datasets/scale_anchor/G8000.mat...
 Graph 1: torch.Size([8000, 8000]), None
 Graph 2: torch.Size([8000, 8000]), None
 Ground truth: torch.Size([6400, 2]), torch.Size([8000, 8000])
-Time for cost matrix: 25.11s
-Iter 0: wasserstein=1.171901, edge=0.001581, neigh=0.055826, align=-0.000449, entropy=17.974394,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.711751, edge=0.000158, neigh=2.820044, align=4.929208, entropy=9.643347,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.687927, edge=0.000008, neigh=2.966727, align=5.361329, entropy=9.027838,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.686736, edge=0.000000, neigh=2.974545, align=5.390380, entropy=8.989617,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.686676, edge=0.000000, neigh=2.974960, align=5.392202, entropy=8.987337,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.686673, edge=0.000000, neigh=2.974981, align=5.392311, entropy=8.987205,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.686673, edge=0.000000, neigh=2.974983, align=5.392318, entropy=8.987197,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.686673, edge=0.000000, neigh=2.974983, align=5.392318, entropy=8.987197,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.686673, edge=0.000000, neigh=2.974983, align=5.392318, entropy=8.987197,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.686673, edge=0.000000, neigh=2.974983, align=5.392318, entropy=8.987197,s=1.000000, s_hat=1.000000
-Time for optimization: 98.65s
+Time for cost matrix: 25.40s
+Time for optimization: 71.38s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -651,18 +381,8 @@ Loading datasets/scale_anchor/G9000.mat...
 Graph 1: torch.Size([9000, 9000]), None
 Graph 2: torch.Size([9000, 9000]), None
 Ground truth: torch.Size([7200, 2]), torch.Size([9000, 9000])
-Time for cost matrix: 32.41s
-Iter 0: wasserstein=1.177005, edge=0.001415, neigh=0.054314, align=-0.000405, entropy=18.209960,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.714200, edge=0.000140, neigh=2.821594, align=4.998687, entropy=9.764468,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.690299, edge=0.000007, neigh=2.967839, align=5.432006, entropy=9.145721,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.689104, edge=0.000000, neigh=2.975547, align=5.461054, entropy=9.107402,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.689044, edge=0.000000, neigh=2.975952, align=5.462872, entropy=9.105120,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.689041, edge=0.000000, neigh=2.975973, align=5.462981, entropy=9.104988,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.689041, edge=0.000000, neigh=2.975974, align=5.462988, entropy=9.104980,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.689041, edge=0.000000, neigh=2.975974, align=5.462988, entropy=9.104980,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.689041, edge=0.000000, neigh=2.975974, align=5.462988, entropy=9.104980,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.689041, edge=0.000000, neigh=2.975974, align=5.462988, entropy=9.104980,s=1.000000, s_hat=1.000000
-Time for optimization: 127.39s
+Time for cost matrix: 33.02s
+Time for optimization: 90.32s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -675,18 +395,8 @@ Loading datasets/scale_anchor/G9000.mat...
 Graph 1: torch.Size([9000, 9000]), None
 Graph 2: torch.Size([9000, 9000]), None
 Ground truth: torch.Size([7200, 2]), torch.Size([9000, 9000])
-Time for cost matrix: 33.35s
-Iter 0: wasserstein=1.177005, edge=0.001415, neigh=0.054314, align=-0.000405, entropy=18.209960,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.714200, edge=0.000140, neigh=2.821594, align=4.998687, entropy=9.764468,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.690299, edge=0.000007, neigh=2.967839, align=5.432006, entropy=9.145721,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.689104, edge=0.000000, neigh=2.975547, align=5.461054, entropy=9.107402,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.689044, edge=0.000000, neigh=2.975952, align=5.462872, entropy=9.105120,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.689041, edge=0.000000, neigh=2.975973, align=5.462981, entropy=9.104988,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.689041, edge=0.000000, neigh=2.975974, align=5.462988, entropy=9.104980,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.689041, edge=0.000000, neigh=2.975974, align=5.462988, entropy=9.104980,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.689041, edge=0.000000, neigh=2.975974, align=5.462988, entropy=9.104980,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.689041, edge=0.000000, neigh=2.975974, align=5.462988, entropy=9.104980,s=1.000000, s_hat=1.000000
-Time for optimization: 122.71s
+Time for cost matrix: 32.06s
+Time for optimization: 87.61s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -699,18 +409,8 @@ Loading datasets/scale_anchor/G9000.mat...
 Graph 1: torch.Size([9000, 9000]), None
 Graph 2: torch.Size([9000, 9000]), None
 Ground truth: torch.Size([7200, 2]), torch.Size([9000, 9000])
-Time for cost matrix: 32.32s
-Iter 0: wasserstein=1.177005, edge=0.001415, neigh=0.054314, align=-0.000405, entropy=18.209960,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.714200, edge=0.000140, neigh=2.821594, align=4.998687, entropy=9.764468,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.690299, edge=0.000007, neigh=2.967839, align=5.432006, entropy=9.145721,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.689104, edge=0.000000, neigh=2.975547, align=5.461054, entropy=9.107402,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.689044, edge=0.000000, neigh=2.975952, align=5.462872, entropy=9.105120,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.689041, edge=0.000000, neigh=2.975973, align=5.462981, entropy=9.104988,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.689041, edge=0.000000, neigh=2.975974, align=5.462988, entropy=9.104980,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.689041, edge=0.000000, neigh=2.975974, align=5.462988, entropy=9.104980,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.689041, edge=0.000000, neigh=2.975974, align=5.462988, entropy=9.104980,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.689041, edge=0.000000, neigh=2.975974, align=5.462988, entropy=9.104980,s=1.000000, s_hat=1.000000
-Time for optimization: 122.44s
+Time for cost matrix: 32.18s
+Time for optimization: 89.13s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -723,18 +423,8 @@ Loading datasets/scale_anchor/G10000.mat...
 Graph 1: torch.Size([10000, 10000]), None
 Graph 2: torch.Size([10000, 10000]), None
 Ground truth: torch.Size([8000, 2]), torch.Size([10000, 10000])
-Time for cost matrix: 44.14s
-Iter 0: wasserstein=1.181646, edge=0.001279, neigh=0.054517, align=-0.000368, entropy=18.420681,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.716030, edge=0.000127, neigh=2.818793, align=5.051886, entropy=9.874746,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.692359, edge=0.000007, neigh=2.964021, align=5.494732, entropy=9.251317,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.691176, edge=0.000000, neigh=2.971661, align=5.524246, entropy=9.212774,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.691117, edge=0.000000, neigh=2.972061, align=5.526087, entropy=9.210481,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.691114, edge=0.000000, neigh=2.972082, align=5.526197, entropy=9.210348,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.691114, edge=0.000000, neigh=2.972083, align=5.526204, entropy=9.210341,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.691113, edge=0.000000, neigh=2.972083, align=5.526204, entropy=9.210340,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.691113, edge=0.000000, neigh=2.972083, align=5.526204, entropy=9.210340,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.691113, edge=0.000000, neigh=2.972083, align=5.526204, entropy=9.210340,s=1.000000, s_hat=1.000000
-Time for optimization: 160.96s
+Time for cost matrix: 42.57s
+Time for optimization: 114.79s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -747,18 +437,8 @@ Loading datasets/scale_anchor/G10000.mat...
 Graph 1: torch.Size([10000, 10000]), None
 Graph 2: torch.Size([10000, 10000]), None
 Ground truth: torch.Size([8000, 2]), torch.Size([10000, 10000])
-Time for cost matrix: 42.45s
-Iter 0: wasserstein=1.181646, edge=0.001279, neigh=0.054517, align=-0.000368, entropy=18.420681,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.716030, edge=0.000127, neigh=2.818793, align=5.051886, entropy=9.874746,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.692359, edge=0.000007, neigh=2.964021, align=5.494732, entropy=9.251317,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.691176, edge=0.000000, neigh=2.971661, align=5.524246, entropy=9.212774,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.691117, edge=0.000000, neigh=2.972061, align=5.526087, entropy=9.210481,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.691114, edge=0.000000, neigh=2.972082, align=5.526197, entropy=9.210348,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.691114, edge=0.000000, neigh=2.972083, align=5.526204, entropy=9.210341,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.691113, edge=0.000000, neigh=2.972083, align=5.526204, entropy=9.210340,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.691113, edge=0.000000, neigh=2.972083, align=5.526204, entropy=9.210340,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.691113, edge=0.000000, neigh=2.972083, align=5.526204, entropy=9.210340,s=1.000000, s_hat=1.000000
-Time for optimization: 158.98s
+Time for cost matrix: 44.53s
+Time for optimization: 112.51s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -771,18 +451,8 @@ Loading datasets/scale_anchor/G10000.mat...
 Graph 1: torch.Size([10000, 10000]), None
 Graph 2: torch.Size([10000, 10000]), None
 Ground truth: torch.Size([8000, 2]), torch.Size([10000, 10000])
-Time for cost matrix: 42.74s
-Iter 0: wasserstein=1.181646, edge=0.001279, neigh=0.054517, align=-0.000368, entropy=18.420681,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.716030, edge=0.000127, neigh=2.818793, align=5.051886, entropy=9.874746,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.692359, edge=0.000007, neigh=2.964021, align=5.494732, entropy=9.251317,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.691176, edge=0.000000, neigh=2.971661, align=5.524246, entropy=9.212774,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.691117, edge=0.000000, neigh=2.972061, align=5.526087, entropy=9.210481,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.691114, edge=0.000000, neigh=2.972082, align=5.526197, entropy=9.210348,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.691114, edge=0.000000, neigh=2.972083, align=5.526204, entropy=9.210341,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.691113, edge=0.000000, neigh=2.972083, align=5.526204, entropy=9.210340,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.691113, edge=0.000000, neigh=2.972083, align=5.526204, entropy=9.210340,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.691113, edge=0.000000, neigh=2.972083, align=5.526204, entropy=9.210340,s=1.000000, s_hat=1.000000
-Time for optimization: 159.43s
+Time for cost matrix: 42.25s
+Time for optimization: 112.19s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -795,18 +465,8 @@ Loading datasets/scale_anchor/G11000.mat...
 Graph 1: torch.Size([11000, 11000]), None
 Graph 2: torch.Size([11000, 11000]), None
 Ground truth: torch.Size([8800, 2]), torch.Size([11000, 11000])
-Time for cost matrix: 52.98s
-Iter 0: wasserstein=1.188972, edge=0.001178, neigh=0.055924, align=-0.000338, entropy=18.611301,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.719659, edge=0.000117, neigh=2.820686, align=5.107510, entropy=9.973995,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.695777, edge=0.000006, neigh=2.964015, align=5.551837, entropy=9.346827,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.694583, edge=0.000000, neigh=2.971523, align=5.581428, entropy=9.308094,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.694523, edge=0.000000, neigh=2.971915, align=5.583273, entropy=9.305792,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.694520, edge=0.000000, neigh=2.971935, align=5.583384, entropy=9.305659,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.694520, edge=0.000000, neigh=2.971936, align=5.583390, entropy=9.305651,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.694520, edge=0.000000, neigh=2.971936, align=5.583390, entropy=9.305651,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.694520, edge=0.000000, neigh=2.971936, align=5.583390, entropy=9.305651,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.694520, edge=0.000000, neigh=2.971936, align=5.583390, entropy=9.305651,s=1.000000, s_hat=1.000000
-Time for optimization: 200.27s
+Time for cost matrix: 50.90s
+Time for optimization: 140.57s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -819,18 +479,8 @@ Loading datasets/scale_anchor/G11000.mat...
 Graph 1: torch.Size([11000, 11000]), None
 Graph 2: torch.Size([11000, 11000]), None
 Ground truth: torch.Size([8800, 2]), torch.Size([11000, 11000])
-Time for cost matrix: 52.41s
-Iter 0: wasserstein=1.188972, edge=0.001178, neigh=0.055924, align=-0.000338, entropy=18.611301,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.719659, edge=0.000117, neigh=2.820686, align=5.107510, entropy=9.973995,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.695777, edge=0.000006, neigh=2.964015, align=5.551837, entropy=9.346827,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.694583, edge=0.000000, neigh=2.971523, align=5.581428, entropy=9.308094,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.694523, edge=0.000000, neigh=2.971915, align=5.583273, entropy=9.305792,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.694520, edge=0.000000, neigh=2.971935, align=5.583384, entropy=9.305659,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.694520, edge=0.000000, neigh=2.971936, align=5.583390, entropy=9.305651,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.694520, edge=0.000000, neigh=2.971936, align=5.583390, entropy=9.305651,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.694520, edge=0.000000, neigh=2.971936, align=5.583390, entropy=9.305651,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.694520, edge=0.000000, neigh=2.971936, align=5.583390, entropy=9.305651,s=1.000000, s_hat=1.000000
-Time for optimization: 196.18s
+Time for cost matrix: 50.31s
+Time for optimization: 135.46s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -843,18 +493,8 @@ Loading datasets/scale_anchor/G11000.mat...
 Graph 1: torch.Size([11000, 11000]), None
 Graph 2: torch.Size([11000, 11000]), None
 Ground truth: torch.Size([8800, 2]), torch.Size([11000, 11000])
-Time for cost matrix: 51.62s
-Iter 0: wasserstein=1.188972, edge=0.001178, neigh=0.055924, align=-0.000338, entropy=18.611301,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.719659, edge=0.000117, neigh=2.820686, align=5.107510, entropy=9.973995,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.695777, edge=0.000006, neigh=2.964015, align=5.551837, entropy=9.346827,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.694583, edge=0.000000, neigh=2.971523, align=5.581428, entropy=9.308094,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.694523, edge=0.000000, neigh=2.971915, align=5.583273, entropy=9.305792,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.694520, edge=0.000000, neigh=2.971935, align=5.583384, entropy=9.305659,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.694520, edge=0.000000, neigh=2.971936, align=5.583390, entropy=9.305651,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.694520, edge=0.000000, neigh=2.971936, align=5.583390, entropy=9.305651,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.694520, edge=0.000000, neigh=2.971936, align=5.583390, entropy=9.305651,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.694520, edge=0.000000, neigh=2.971936, align=5.583390, entropy=9.305651,s=1.000000, s_hat=1.000000
-Time for optimization: 198.25s
+Time for cost matrix: 50.10s
+Time for optimization: 134.70s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -867,18 +507,8 @@ Loading datasets/scale_anchor/G12000.mat...
 Graph 1: torch.Size([12000, 12000]), None
 Graph 2: torch.Size([12000, 12000]), None
 Ground truth: torch.Size([9600, 2]), torch.Size([12000, 12000])
-Time for cost matrix: 62.80s
-Iter 0: wasserstein=1.191755, edge=0.001082, neigh=0.054700, align=-0.000313, entropy=18.785324,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.721252, edge=0.000109, neigh=2.820835, align=5.156264, entropy=10.068557,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.697108, edge=0.000006, neigh=2.962609, align=5.603766, entropy=9.434322,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.695901, edge=0.000000, neigh=2.970083, align=5.633616, entropy=9.395134,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.695841, edge=0.000000, neigh=2.970475, align=5.635479, entropy=9.392805,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.695838, edge=0.000000, neigh=2.970495, align=5.635590, entropy=9.392670,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.695838, edge=0.000000, neigh=2.970496, align=5.635597, entropy=9.392662,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.695838, edge=0.000000, neigh=2.970496, align=5.635597, entropy=9.392662,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.695838, edge=0.000000, neigh=2.970496, align=5.635597, entropy=9.392662,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.695838, edge=0.000000, neigh=2.970496, align=5.635597, entropy=9.392662,s=1.000000, s_hat=1.000000
-Time for optimization: 252.39s
+Time for cost matrix: 60.91s
+Time for optimization: 174.63s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -891,18 +521,8 @@ Loading datasets/scale_anchor/G12000.mat...
 Graph 1: torch.Size([12000, 12000]), None
 Graph 2: torch.Size([12000, 12000]), None
 Ground truth: torch.Size([9600, 2]), torch.Size([12000, 12000])
-Time for cost matrix: 62.10s
-Iter 0: wasserstein=1.191755, edge=0.001082, neigh=0.054700, align=-0.000313, entropy=18.785324,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.721252, edge=0.000109, neigh=2.820835, align=5.156264, entropy=10.068557,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.697108, edge=0.000006, neigh=2.962609, align=5.603766, entropy=9.434322,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.695901, edge=0.000000, neigh=2.970083, align=5.633616, entropy=9.395134,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.695841, edge=0.000000, neigh=2.970475, align=5.635479, entropy=9.392805,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.695838, edge=0.000000, neigh=2.970495, align=5.635590, entropy=9.392670,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.695838, edge=0.000000, neigh=2.970496, align=5.635597, entropy=9.392662,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.695838, edge=0.000000, neigh=2.970496, align=5.635597, entropy=9.392662,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.695838, edge=0.000000, neigh=2.970496, align=5.635597, entropy=9.392662,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.695838, edge=0.000000, neigh=2.970496, align=5.635597, entropy=9.392662,s=1.000000, s_hat=1.000000
-Time for optimization: 246.21s
+Time for cost matrix: 61.33s
+Time for optimization: 168.30s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -915,18 +535,8 @@ Loading datasets/scale_anchor/G12000.mat...
 Graph 1: torch.Size([12000, 12000]), None
 Graph 2: torch.Size([12000, 12000]), None
 Ground truth: torch.Size([9600, 2]), torch.Size([12000, 12000])
-Time for cost matrix: 62.49s
-Iter 0: wasserstein=1.191755, edge=0.001082, neigh=0.054700, align=-0.000313, entropy=18.785324,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.721252, edge=0.000109, neigh=2.820835, align=5.156264, entropy=10.068557,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.697108, edge=0.000006, neigh=2.962609, align=5.603766, entropy=9.434322,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.695901, edge=0.000000, neigh=2.970083, align=5.633616, entropy=9.395134,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.695841, edge=0.000000, neigh=2.970475, align=5.635479, entropy=9.392805,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.695838, edge=0.000000, neigh=2.970495, align=5.635590, entropy=9.392670,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.695838, edge=0.000000, neigh=2.970496, align=5.635597, entropy=9.392662,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.695838, edge=0.000000, neigh=2.970496, align=5.635597, entropy=9.392662,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.695838, edge=0.000000, neigh=2.970496, align=5.635597, entropy=9.392662,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.695838, edge=0.000000, neigh=2.970496, align=5.635597, entropy=9.392662,s=1.000000, s_hat=1.000000
-Time for optimization: 249.42s
+Time for cost matrix: 60.10s
+Time for optimization: 169.48s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -939,18 +549,8 @@ Loading datasets/scale_anchor/G13000.mat...
 Graph 1: torch.Size([13000, 13000]), None
 Graph 2: torch.Size([13000, 13000]), None
 Ground truth: torch.Size([10400, 2]), torch.Size([13000, 13000])
-Time for cost matrix: 78.50s
-Iter 0: wasserstein=1.194056, edge=0.001007, neigh=0.055084, align=-0.000291, entropy=18.945409,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.722057, edge=0.000102, neigh=2.830542, align=5.196879, entropy=10.152193,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.698211, edge=0.000005, neigh=2.967052, align=5.651399, entropy=9.514566,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.697019, edge=0.000000, neigh=2.974151, align=5.681621, entropy=9.475188,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.696959, edge=0.000000, neigh=2.974519, align=5.683503, entropy=9.472848,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.696956, edge=0.000000, neigh=2.974538, align=5.683616, entropy=9.472713,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.696956, edge=0.000000, neigh=2.974539, align=5.683622, entropy=9.472705,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.696956, edge=0.000000, neigh=2.974539, align=5.683623, entropy=9.472705,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.696956, edge=0.000000, neigh=2.974539, align=5.683623, entropy=9.472705,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.696956, edge=0.000000, neigh=2.974539, align=5.683623, entropy=9.472705,s=1.000000, s_hat=1.000000
-Time for optimization: 298.35s
+Time for cost matrix: 73.76s
+Time for optimization: 206.38s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -963,18 +563,8 @@ Loading datasets/scale_anchor/G13000.mat...
 Graph 1: torch.Size([13000, 13000]), None
 Graph 2: torch.Size([13000, 13000]), None
 Ground truth: torch.Size([10400, 2]), torch.Size([13000, 13000])
-Time for cost matrix: 73.67s
-Iter 0: wasserstein=1.194056, edge=0.001007, neigh=0.055084, align=-0.000291, entropy=18.945409,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.722057, edge=0.000102, neigh=2.830542, align=5.196879, entropy=10.152193,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.698211, edge=0.000005, neigh=2.967052, align=5.651399, entropy=9.514566,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.697019, edge=0.000000, neigh=2.974151, align=5.681621, entropy=9.475188,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.696959, edge=0.000000, neigh=2.974519, align=5.683503, entropy=9.472848,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.696956, edge=0.000000, neigh=2.974538, align=5.683616, entropy=9.472713,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.696956, edge=0.000000, neigh=2.974539, align=5.683622, entropy=9.472705,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.696956, edge=0.000000, neigh=2.974539, align=5.683623, entropy=9.472705,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.696956, edge=0.000000, neigh=2.974539, align=5.683623, entropy=9.472705,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.696956, edge=0.000000, neigh=2.974539, align=5.683623, entropy=9.472705,s=1.000000, s_hat=1.000000
-Time for optimization: 290.16s
+Time for cost matrix: 73.26s
+Time for optimization: 199.51s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -987,18 +577,8 @@ Loading datasets/scale_anchor/G13000.mat...
 Graph 1: torch.Size([13000, 13000]), None
 Graph 2: torch.Size([13000, 13000]), None
 Ground truth: torch.Size([10400, 2]), torch.Size([13000, 13000])
-Time for cost matrix: 73.81s
-Iter 0: wasserstein=1.194056, edge=0.001007, neigh=0.055084, align=-0.000291, entropy=18.945409,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.722057, edge=0.000102, neigh=2.830542, align=5.196879, entropy=10.152193,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.698211, edge=0.000005, neigh=2.967052, align=5.651399, entropy=9.514566,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.697019, edge=0.000000, neigh=2.974151, align=5.681621, entropy=9.475188,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.696959, edge=0.000000, neigh=2.974519, align=5.683503, entropy=9.472848,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.696956, edge=0.000000, neigh=2.974538, align=5.683616, entropy=9.472713,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.696956, edge=0.000000, neigh=2.974539, align=5.683622, entropy=9.472705,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.696956, edge=0.000000, neigh=2.974539, align=5.683623, entropy=9.472705,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.696956, edge=0.000000, neigh=2.974539, align=5.683623, entropy=9.472705,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.696956, edge=0.000000, neigh=2.974539, align=5.683623, entropy=9.472705,s=1.000000, s_hat=1.000000
-Time for optimization: 294.56s
+Time for cost matrix: 72.43s
+Time for optimization: 201.93s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -1011,18 +591,8 @@ Loading datasets/scale_anchor/G14000.mat...
 Graph 1: torch.Size([14000, 14000]), None
 Graph 2: torch.Size([14000, 14000]), None
 Ground truth: torch.Size([11200, 2]), torch.Size([14000, 14000])
-Time for cost matrix: 92.12s
-Iter 0: wasserstein=1.195809, edge=0.000937, neigh=0.054836, align=-0.000273, entropy=19.093625,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.722824, edge=0.000093, neigh=2.826219, align=5.239735, entropy=10.228456,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.698986, edge=0.000005, neigh=2.966866, align=5.695905, entropy=9.588659,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.697794, edge=0.000000, neigh=2.974148, align=5.726093, entropy=9.549290,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.697735, edge=0.000000, neigh=2.974525, align=5.727969, entropy=9.546956,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.697732, edge=0.000000, neigh=2.974544, align=5.728081, entropy=9.546821,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.697732, edge=0.000000, neigh=2.974545, align=5.728087, entropy=9.546813,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.697732, edge=0.000000, neigh=2.974545, align=5.728088, entropy=9.546813,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.697732, edge=0.000000, neigh=2.974545, align=5.728088, entropy=9.546813,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.697732, edge=0.000000, neigh=2.974545, align=5.728088, entropy=9.546813,s=1.000000, s_hat=1.000000
-Time for optimization: 365.09s
+Time for cost matrix: 90.94s
+Time for optimization: 243.57s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -1035,18 +605,8 @@ Loading datasets/scale_anchor/G14000.mat...
 Graph 1: torch.Size([14000, 14000]), None
 Graph 2: torch.Size([14000, 14000]), None
 Ground truth: torch.Size([11200, 2]), torch.Size([14000, 14000])
-Time for cost matrix: 91.59s
-Iter 0: wasserstein=1.195809, edge=0.000937, neigh=0.054836, align=-0.000273, entropy=19.093625,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.722824, edge=0.000093, neigh=2.826219, align=5.239735, entropy=10.228456,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.698986, edge=0.000005, neigh=2.966866, align=5.695905, entropy=9.588659,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.697794, edge=0.000000, neigh=2.974148, align=5.726093, entropy=9.549290,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.697735, edge=0.000000, neigh=2.974525, align=5.727969, entropy=9.546956,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.697732, edge=0.000000, neigh=2.974544, align=5.728081, entropy=9.546821,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.697732, edge=0.000000, neigh=2.974545, align=5.728087, entropy=9.546813,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.697732, edge=0.000000, neigh=2.974545, align=5.728088, entropy=9.546813,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.697732, edge=0.000000, neigh=2.974545, align=5.728088, entropy=9.546813,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.697732, edge=0.000000, neigh=2.974545, align=5.728088, entropy=9.546813,s=1.000000, s_hat=1.000000
-Time for optimization: 359.03s
+Time for cost matrix: 88.55s
+Time for optimization: 240.38s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -1059,18 +619,8 @@ Loading datasets/scale_anchor/G14000.mat...
 Graph 1: torch.Size([14000, 14000]), None
 Graph 2: torch.Size([14000, 14000]), None
 Ground truth: torch.Size([11200, 2]), torch.Size([14000, 14000])
-Time for cost matrix: 90.76s
-Iter 0: wasserstein=1.195809, edge=0.000937, neigh=0.054836, align=-0.000273, entropy=19.093625,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.722824, edge=0.000093, neigh=2.826219, align=5.239735, entropy=10.228456,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.698986, edge=0.000005, neigh=2.966866, align=5.695905, entropy=9.588659,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.697794, edge=0.000000, neigh=2.974148, align=5.726093, entropy=9.549290,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.697735, edge=0.000000, neigh=2.974525, align=5.727969, entropy=9.546956,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.697732, edge=0.000000, neigh=2.974544, align=5.728081, entropy=9.546821,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.697732, edge=0.000000, neigh=2.974545, align=5.728087, entropy=9.546813,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.697732, edge=0.000000, neigh=2.974545, align=5.728088, entropy=9.546813,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.697732, edge=0.000000, neigh=2.974545, align=5.728088, entropy=9.546813,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.697732, edge=0.000000, neigh=2.974545, align=5.728088, entropy=9.546813,s=1.000000, s_hat=1.000000
-Time for optimization: 365.04s
+Time for cost matrix: 89.97s
+Time for optimization: 242.85s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -1083,18 +633,8 @@ Loading datasets/scale_anchor/G15000.mat...
 Graph 1: torch.Size([15000, 15000]), None
 Graph 2: torch.Size([15000, 15000]), None
 Ground truth: torch.Size([12000, 2]), torch.Size([15000, 15000])
-Time for cost matrix: 114.81s
-Iter 0: wasserstein=1.197621, edge=0.000877, neigh=0.055731, align=-0.000256, entropy=19.231611,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.723686, edge=0.000088, neigh=2.828886, align=5.275834, entropy=10.301934,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.699888, edge=0.000005, neigh=2.965794, align=5.736964, entropy=9.657949,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.698698, edge=0.000000, neigh=2.972890, align=5.767469, entropy=9.618301,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.698639, edge=0.000000, neigh=2.973257, align=5.769363, entropy=9.615950,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.698636, edge=0.000000, neigh=2.973276, align=5.769476, entropy=9.615814,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.698635, edge=0.000000, neigh=2.973277, align=5.769483, entropy=9.615806,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.698635, edge=0.000000, neigh=2.973277, align=5.769483, entropy=9.615806,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.698635, edge=0.000000, neigh=2.973277, align=5.769483, entropy=9.615805,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.698635, edge=0.000000, neigh=2.973277, align=5.769483, entropy=9.615805,s=1.000000, s_hat=1.000000
-Time for optimization: 433.80s
+Time for cost matrix: 109.27s
+Time for optimization: 285.21s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -1107,18 +647,8 @@ Loading datasets/scale_anchor/G15000.mat...
 Graph 1: torch.Size([15000, 15000]), None
 Graph 2: torch.Size([15000, 15000]), None
 Ground truth: torch.Size([12000, 2]), torch.Size([15000, 15000])
-Time for cost matrix: 109.16s
-Iter 0: wasserstein=1.197621, edge=0.000877, neigh=0.055731, align=-0.000256, entropy=19.231611,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.723686, edge=0.000088, neigh=2.828886, align=5.275834, entropy=10.301934,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.699888, edge=0.000005, neigh=2.965794, align=5.736964, entropy=9.657949,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.698698, edge=0.000000, neigh=2.972890, align=5.767469, entropy=9.618301,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.698639, edge=0.000000, neigh=2.973257, align=5.769363, entropy=9.615950,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.698636, edge=0.000000, neigh=2.973276, align=5.769476, entropy=9.615814,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.698635, edge=0.000000, neigh=2.973277, align=5.769483, entropy=9.615806,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.698635, edge=0.000000, neigh=2.973277, align=5.769483, entropy=9.615806,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.698635, edge=0.000000, neigh=2.973277, align=5.769483, entropy=9.615805,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.698635, edge=0.000000, neigh=2.973277, align=5.769483, entropy=9.615805,s=1.000000, s_hat=1.000000
-Time for optimization: 426.28s
+Time for cost matrix: 104.52s
+Time for optimization: 282.55s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
@@ -1131,18 +661,8 @@ Loading datasets/scale_anchor/G15000.mat...
 Graph 1: torch.Size([15000, 15000]), None
 Graph 2: torch.Size([15000, 15000]), None
 Ground truth: torch.Size([12000, 2]), torch.Size([15000, 15000])
-Time for cost matrix: 111.10s
-Iter 0: wasserstein=1.197621, edge=0.000877, neigh=0.055731, align=-0.000256, entropy=19.231611,s=1.000000, s_hat=1.000000
-Iter 1: wasserstein=0.723686, edge=0.000088, neigh=2.828886, align=5.275834, entropy=10.301934,s=1.000000, s_hat=1.000000
-Iter 2: wasserstein=0.699888, edge=0.000005, neigh=2.965794, align=5.736964, entropy=9.657949,s=1.000000, s_hat=1.000000
-Iter 3: wasserstein=0.698698, edge=0.000000, neigh=2.972890, align=5.767469, entropy=9.618301,s=1.000000, s_hat=1.000000
-Iter 4: wasserstein=0.698639, edge=0.000000, neigh=2.973257, align=5.769363, entropy=9.615950,s=1.000000, s_hat=1.000000
-Iter 5: wasserstein=0.698636, edge=0.000000, neigh=2.973276, align=5.769476, entropy=9.615814,s=1.000000, s_hat=1.000000
-Iter 6: wasserstein=0.698635, edge=0.000000, neigh=2.973277, align=5.769483, entropy=9.615806,s=1.000000, s_hat=1.000000
-Iter 7: wasserstein=0.698635, edge=0.000000, neigh=2.973277, align=5.769483, entropy=9.615806,s=1.000000, s_hat=1.000000
-Iter 8: wasserstein=0.698635, edge=0.000000, neigh=2.973277, align=5.769483, entropy=9.615805,s=1.000000, s_hat=1.000000
-Iter 9: wasserstein=0.698635, edge=0.000000, neigh=2.973277, align=5.769483, entropy=9.615805,s=1.000000, s_hat=1.000000
-Time for optimization: 431.39s
+Time for cost matrix: 105.74s
+Time for optimization: 284.23s
 Test results:
 Top-1: 1.000
 Top-10: 1.000
