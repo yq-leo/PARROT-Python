@@ -8,3 +8,5 @@ datasets/mat/
 datasets/rwr/
 datasets/np/
 parrot_venv/
+datasets/cost/
+outputs/
