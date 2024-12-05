@@ -42,8 +42,8 @@ def load_data(file_path, G1_name, G2_name, use_attr):
 
     adj_mat1 = torch.from_numpy(adj_mat1).to(torch.int8)
     adj_mat2 = torch.from_numpy(adj_mat2).to(torch.int8)
-    x1 = torch.from_numpy(x1).to(torch.float64) if x1 is not None else None
-    x2 = torch.from_numpy(x2).to(torch.float64) if x2 is not None else None
+    x1 = torch.from_numpy(x1).to(torch.float32) if x1 is not None else None
+    x2 = torch.from_numpy(x2).to(torch.float32) if x2 is not None else None
     gnd = torch.from_numpy(gnd)
     H = torch.from_numpy(H).to(torch.int8)
 

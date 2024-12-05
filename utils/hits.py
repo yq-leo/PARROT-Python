@@ -31,7 +31,7 @@ def get_hits(s, gnd, H, topK):
     p = []
     for i in range(len(topK)):
         p.append(torch.sum(torch.tensor(ind) < topK[i]))
-    p = torch.tensor(p).to(torch.float64) / test_len
+    p = torch.tensor(p).to(torch.float32) / test_len
 
     return p, mrr
 
