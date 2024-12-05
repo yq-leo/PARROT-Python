@@ -103,6 +103,7 @@ def cpot(L1, L2, crossC, intraC1, intraC2, inIter, outIter, H, l1, l2, l3, l4):
     # outIter = min(outIter, int(np.max(crossC) * np.log(max(nx, ny) * (eps ** (-3)))))
     start_time = time.time()
     for i in tqdm(range(outIter), desc="Computing constraint proximal point iteration"):
+        start_out = time.time()
         T_old = torch.clone(T)
         CGW = temp1 - intraC1 @ T @ intraC2.T
         C = crossC - l2 * torch.log(L1 @ T @ L2.T) - l3 * torch.log(H) + l4 * CGW
@@ -119,14 +120,18 @@ def cpot(L1, L2, crossC, intraC1, intraC2, inIter, outIter, H, l1, l2, l3, l4):
 
         Q = C - l1 * torch.log(T)
         for j in range(inIter):
+            start_in = time.time()
             a = minaa(Q - b, l_total)
             b = minbb(Q - a, l_total)
-            pass
+            end_in = time.time()
+            print(f'In Iter {j + 1}, Time: {end_in - start_in:.4f}')
 
         T = 0.05 * T_old + 0.95 * r * torch.exp((a + b - Q) / l_total) * c
         res = torch.sum(torch.abs(T - T_old))
         resRecord.append(res)
         WRecord.append(torch.sum(T * C))
+        end_out = time.time()
+        print(f'Out Iter {i + 1}, Time: {end_out - start_out:.4f}')
 
     end_time = time.time()
     print(f"Time for optimization: {end_time - start_time:.2f}s")
