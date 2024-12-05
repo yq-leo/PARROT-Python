@@ -45,15 +45,14 @@ def get_cost(dataset, A1, A2, X1, X2, H, rwrIter, rwIter, alpha, beta, gamma, rw
 
     intraC1 = get_intra_cost(X1) * A1
     intraC2 = get_intra_cost(X2) * A2
-    # crossC = get_cross_cost(X1, X2, H)
+    crossC = get_cross_cost(X1, X2, H)
 
     # rwr on the product graph
-    # crossC = crossC + alpha * rwrCost
-    crossC = rwrCost
-    L1 = A1 / A1.sum(1, keepdim=True).to(torch.float32)
-    L2 = A2 / A2.sum(1, keepdim=True).to(torch.float32)
+    crossC = crossC + alpha * rwrCost
+    # L1 = A1 / A1.sum(1, keepdim=True).to(torch.float32)
+    # L2 = A2 / A2.sum(1, keepdim=True).to(torch.float32)
 
-    crossC = get_prod_rwr(L1, L2, crossC, H, beta, gamma, rwIter)
+    # crossC = get_prod_rwr(L1, L2, crossC, H, beta, gamma, rwIter)
 
     end_time = time.time()
     print(f"Time for cost matrix: {end_time - start_time:.2f}s")
