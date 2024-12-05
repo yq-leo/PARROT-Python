@@ -6,7 +6,7 @@ import os
 from tqdm import tqdm
 
 
-def get_cost(dataset, A1, A2, X1, X2, H, rwrIter, rwIter, alpha, beta, gamma):
+def get_cost(dataset, A1, A2, X1, X2, H, rwrIter, rwIter, alpha, beta, gamma, rwr_time_list):
     """
     Calculate cross/intra-graph cost based on attribute/rw
     :param dataset: dataset name
@@ -20,6 +20,7 @@ def get_cost(dataset, A1, A2, X1, X2, H, rwrIter, rwIter, alpha, beta, gamma):
     :param alpha: weight balancing attribute cost and rwr cost
     :param beta: rwr restart ratio
     :param gamma: discounted factor of Bellman equation
+    :param rwr_time_list: list to store RWR time
     :return:
         crossC: cross-graph cost matrix, shape=(n1, n2)
         intraC1: intra-graph cost matrix for graph 1, shape=(n1, n1)
@@ -31,7 +32,10 @@ def get_cost(dataset, A1, A2, X1, X2, H, rwrIter, rwIter, alpha, beta, gamma):
     # calculate RWR
     T1 = cal_trans(A1, None)
     T2 = cal_trans(A2, None)
+    start_rwr = time.time()
     rwr1, rwr2 = get_sep_rwr(T1, T2, H, beta, rwrIter)
+    rwr_time_list.append(time.time() - start_rwr)
+    print(f"RWR time: {rwr_time_list[-1]:.4f}")
     rwrCost = get_cross_cost(rwr1, rwr2, H)
 
     # cross/intra-graph cost based on node attributes

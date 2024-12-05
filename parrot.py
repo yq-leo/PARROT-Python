@@ -4,7 +4,7 @@ from utils import *
 from tqdm import tqdm
 
 
-def parrot(dataset_name, A1, A2, X1, X2, H, sepRwrIter, prodRwrIter, alpha, beta, gamma, inIter, outIter, l1, l2, l3, l4):
+def parrot(dataset_name, A1, A2, X1, X2, H, sepRwrIter, prodRwrIter, alpha, beta, gamma, inIter, outIter, l1, l2, l3, l4, rwr_time_list):
     """
     Position-aware optimal transport for network alignment.
     :param dataset_name: dataset name
@@ -24,6 +24,7 @@ def parrot(dataset_name, A1, A2, X1, X2, H, sepRwrIter, prodRwrIter, alpha, beta
     :param l2: weight for smoothness regularization
     :param l3: weight for prior knowledge regularization
     :param l4: weight balancing Wasserstein and Gromov-Wasserstein distance
+    :param rwr_time_list: list to store RWR time
     :return:
         T: trasnport plan/alignment score, shape=(n1, n2)
         W: Wasserstein distance along the distance, shape=outIter
@@ -40,7 +41,7 @@ def parrot(dataset_name, A1, A2, X1, X2, H, sepRwrIter, prodRwrIter, alpha, beta
     L1 = A1 / A1.sum(1, keepdim=True).to(torch.float64)
     L2 = A2 / A2.sum(1, keepdim=True).to(torch.float64)
 
-    crossC, intraC1, intraC2 = get_cost(dataset_name, A1, A2, X1, X2, H, sepRwrIter, prodRwrIter, alpha, beta, gamma)
+    crossC, intraC1, intraC2 = get_cost(dataset_name, A1, A2, X1, X2, H, sepRwrIter, prodRwrIter, alpha, beta, gamma, rwr_time_list)
     T, W, res = cpot(L1, L2, crossC, intraC1, intraC2, inIter, outIter, H, l1, l2, l3, l4)
 
     return T, W, res
