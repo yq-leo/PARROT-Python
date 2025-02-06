@@ -4,7 +4,7 @@ from utils import *
 from tqdm import tqdm
 
 
-def parrot(dataset_name, A1, A2, X1, X2, H, sepRwrIter, prodRwrIter, alpha, beta, gamma, inIter, outIter, l1, l2, l3, l4):
+def parrot(dataset_name, A1, A2, X1, X2, H, sepRwrIter, prodRwrIter, alpha, beta, gamma, inIter, outIter, l1, l2, l3, l4, device='cpu'):
     """
     Position-aware optimal transport for network alignment.
     :param dataset_name: dataset name
@@ -30,12 +30,20 @@ def parrot(dataset_name, A1, A2, X1, X2, H, sepRwrIter, prodRwrIter, alpha, beta
         res: diff between two consecutive alignment scores, shape=outIter
     """
 
+    A1 = A1.to(device)
+    A2 = A2.to(device)
+    if X1 is not None:
+        X1 = X1.to(device)
+    if X2 is not None:
+        X2 = X2.to(device)
+    H = H.to(device)
+
     nx, ny = H.T.shape
 
     if torch.sum(A1.sum(1) == 0) != 0:
-        A1[torch.where(A1.sum(1) == 0)] = torch.ones(nx).int()
+        A1[torch.where(A1.sum(1) == 0)] = torch.ones(nx).int().to(device)
     if torch.sum(A2.sum(1) == 0) != 0:
-        A2[torch.where(A2.sum(1) == 0)] = torch.ones(ny).int()
+        A2[torch.where(A2.sum(1) == 0)] = torch.ones(ny).int().to(device)
 
     L1 = A1 / A1.sum(1, keepdim=True).to(torch.float64)
     L2 = A2 / A2.sum(1, keepdim=True).to(torch.float64)
@@ -43,7 +51,7 @@ def parrot(dataset_name, A1, A2, X1, X2, H, sepRwrIter, prodRwrIter, alpha, beta
     crossC, intraC1, intraC2 = get_cost(dataset_name, A1, A2, X1, X2, H, sepRwrIter, prodRwrIter, alpha, beta, gamma)
     T, W, res = cpot(L1, L2, crossC, intraC1, intraC2, inIter, outIter, H, l1, l2, l3, l4)
 
-    return T, W, res
+    return T.cpu(), W, res
 
 
 def cpot(L1, L2, crossC, intraC1, intraC2, inIter, outIter, H, l1, l2, l3, l4):
@@ -69,24 +77,25 @@ def cpot(L1, L2, crossC, intraC1, intraC2, inIter, outIter, H, l1, l2, l3, l4):
 
     nx, ny = crossC.shape
     l4 = l4 * nx * ny
+    device = crossC.device
 
     # define initial matrix values
-    a = torch.ones((nx, 1)).to(torch.float64) / nx
-    b = torch.ones((1, ny)).to(torch.float64) / ny
-    r = torch.ones((nx, 1)).to(torch.float64) / nx
-    c = torch.ones((1, ny)).to(torch.float64) / ny
+    a = torch.ones((nx, 1)).to(torch.float64).to(device) / nx
+    b = torch.ones((1, ny)).to(torch.float64).to(device) / ny
+    r = torch.ones((nx, 1)).to(torch.float64).to(device) / nx
+    c = torch.ones((1, ny)).to(torch.float64).to(device) / ny
     l_total = l1 + l2 + l3
 
-    T = torch.ones((nx, ny)).to(torch.float64) / (nx * ny)
-    H = H.T + torch.ones((nx, ny)).to(torch.float64) / ny
+    T = torch.ones((nx, ny)).to(torch.float64).to(device) / (nx * ny)
+    H = H.T + torch.ones((nx, ny)).to(torch.float64).to(device) / ny
 
     # functions for OT
     def mina(H_in, epsilon):
-        in_a = torch.ones((nx, 1)).to(torch.float64) / nx
+        in_a = torch.ones((nx, 1)).to(torch.float64).to(device) / nx
         return -epsilon * torch.log(torch.sum(in_a * torch.exp(-H_in / epsilon), dim=0, keepdim=True))
 
     def minb(H_in, epsilon):
-        in_b = torch.ones((1, ny)).to(torch.float64) / ny
+        in_b = torch.ones((1, ny)).to(torch.float64).to(device) / ny
         return -epsilon * torch.log(torch.sum(in_b * torch.exp(-H_in / epsilon), dim=1, keepdim=True))
 
     def minaa(H_in, epsilon):
@@ -95,11 +104,10 @@ def cpot(L1, L2, crossC, intraC1, intraC2, inIter, outIter, H, l1, l2, l3, l4):
     def minbb(H_in, epsilon):
         return minb(H_in - torch.min(H_in, dim=1).values.view(-1, 1), epsilon) + torch.min(H_in, dim=1).values.view(-1, 1)
 
-    temp1 = 0.5 * (intraC1 ** 2) @ r @ torch.ones((1, ny)).to(torch.float64) + 0.5 * torch.ones((nx, 1)).to(torch.float64) @ c @ (intraC2 ** 2).T
+    temp1 = 0.5 * (intraC1 ** 2) @ r @ torch.ones((1, ny)).to(torch.float64).to(device) + 0.5 * torch.ones((nx, 1)).to(torch.float64).to(device) @ c @ (intraC2 ** 2).T
 
     resRecord = []
     WRecord = []
-    # outIter = min(outIter, int(np.max(crossC) * np.log(max(nx, ny) * (eps ** (-3)))))
     start_time = time.time()
     for i in tqdm(range(outIter), desc="Computing constraint proximal point iteration"):
         T_old = torch.clone(T)
@@ -131,9 +139,3 @@ def cpot(L1, L2, crossC, intraC1, intraC2, inIter, outIter, H, l1, l2, l3, l4):
     print(f"Time for optimization: {end_time - start_time:.2f}s")
 
     return T, WRecord, resRecord
-
-
-
-
-
-

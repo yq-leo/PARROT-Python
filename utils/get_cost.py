@@ -55,7 +55,10 @@ def get_cost(dataset, A1, A2, X1, X2, H, rwrIter, rwIter, alpha, beta, gamma):
 
     if not os.path.exists(f"datasets/rwr"):
         os.makedirs(f"datasets/rwr")
-    np.savez(f"datasets/rwr/rwr_cost_{dataset}.npz", rwr1=rwr1.numpy(), rwr2=rwr2.numpy(), cross_rwr=rwrCost.numpy())
+    np.savez(f"datasets/rwr/rwr_cost_{dataset}.npz",
+             rwr1=rwr1.cpu().numpy(), 
+             rwr2=rwr2.cpu().numpy(),
+             cross_rwr=rwrCost.cpu().numpy())
 
     return crossC, intraC1, intraC2
 
@@ -72,7 +75,7 @@ def cal_trans(A, X=None):
     n = A.shape[0]
 
     if X is None:
-        X = torch.ones((n, 1)).to(torch.float64)
+        X = torch.ones((n, 1)).to(torch.float64).to(A.device)
     X = X / torch.linalg.norm(X, dim=1, ord=2, keepdim=True)
     sim = X @ X.T
     T = sim * A
@@ -100,13 +103,13 @@ def get_sep_rwr(T1, T2, H, beta, sepRwrIter):
     n1, n2 = T1.shape[0], T2.shape[0]
     num_anchors = anchors1.shape[0]
 
-    e1 = torch.zeros((n1, num_anchors)).to(torch.float64)
-    e2 = torch.zeros((n2, num_anchors)).to(torch.float64)
+    e1 = torch.zeros((n1, num_anchors)).to(torch.float64).to(T1.device)
+    e2 = torch.zeros((n2, num_anchors)).to(torch.float64).to(T2.device)
     e1[(anchors1, torch.arange(num_anchors))] = 1
     e2[(anchors2, torch.arange(num_anchors))] = 1
 
-    r1 = torch.zeros((n1, num_anchors)).to(torch.float64)
-    r2 = torch.zeros((n2, num_anchors)).to(torch.float64)
+    r1 = torch.zeros((n1, num_anchors)).to(torch.float64).to(T1.device)
+    r2 = torch.zeros((n2, num_anchors)).to(torch.float64).to(T2.device)
 
     for i in tqdm(range(sepRwrIter), desc="Computing separate RWR scores"):
         r1_old = torch.clone(r1)
@@ -134,9 +137,9 @@ def get_cross_cost(X1, X2, H):
     X1_zero_pos = torch.where(X1.abs().sum(1) == 0)
     X2_zero_pos = torch.where(X2.abs().sum(1) == 0)
     if X1_zero_pos[0].shape[0] != 0:
-        X1[X1_zero_pos] = torch.ones(d).to(torch.float64)
+        X1[X1_zero_pos] = torch.ones(d).to(torch.float64).to(X1.device)
     if X2_zero_pos[0].shape[0] != 0:
-        X2[X2_zero_pos] = torch.ones(d).to(torch.float64)
+        X2[X2_zero_pos] = torch.ones(d).to(torch.float64).to(X2.device)
 
     X1 = X1 / torch.linalg.norm(X1, dim=1, ord=2, keepdim=True)
     X2 = X2 / torch.linalg.norm(X2, dim=1, ord=2, keepdim=True)
@@ -182,7 +185,7 @@ def get_prod_rwr(L1, L2, nodeCost, H, beta, gamma, prodRwrIter):
     eps = 1e-2
     nx, ny = H.T.shape
     HInd = torch.where(H.T == 1)
-    crossCost = torch.zeros((nx, ny)).to(torch.float64)
+    crossCost = torch.zeros((nx, ny)).to(torch.float64).to(L1.device)
     for i in tqdm(range(prodRwrIter), desc="Computing product RWR scores"):
         rwCost_old = torch.clone(crossCost)
         crossCost = (1 + gamma * beta) * nodeCost + (1 - beta) * gamma * L1 @ crossCost @ L2.T
